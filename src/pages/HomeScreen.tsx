@@ -100,9 +100,6 @@ export default function HomeScreen() {
                         <p className="text-sm text-muted">Nenhuma partida agendada</p>
                     </div>
                 )}
-                <button className="btn btn-primary btn-full" style={{ marginTop: 14 }}>
-                    Partiu, jogo! →
-                </button>
             </section>
 
             {/* QUICK LINKS */}

@@ -1,13 +1,16 @@
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, Eye, EyeOff, LogIn } from 'lucide-react'
+import { ArrowLeft, Eye, EyeOff, LogIn, UserPlus } from 'lucide-react'
 import DebreBadge from '../components/DebreBadge'
 import { ToastCtx } from '../App'
+import { useAuth } from '../contexts/AuthContext'
 import '../styles/Login.css'
 
 export default function LoginScreen() {
     const navigate = useNavigate()
     const showToast = useContext(ToastCtx)
+    const { login, register, loginWithGoogle } = useAuth()
+
     const [tab, setTab] = useState<'login' | 'cadastro'>('login')
     const [showPass, setShowPass] = useState(false)
     const [email, setEmail] = useState('')
@@ -15,30 +18,61 @@ export default function LoginScreen() {
     const [name, setName] = useState('')
     const [loading, setLoading] = useState(false)
 
-    const handleAuth = () => {
-        if (!email || !pass) { showToast('Preenche os campos, cara!'); return }
+    const handleAuth = async () => {
+        if (!email.trim() || !pass.trim()) {
+            showToast('Preenche e-mail e senha, cara! 😅')
+            return
+        }
+        if (tab === 'cadastro' && !name.trim()) {
+            showToast('Coloca seu nome, torcedor!')
+            return
+        }
         setLoading(true)
-        setTimeout(() => {
+        try {
+            if (tab === 'login') {
+                const ok = await login(email.trim(), pass)
+                if (ok) {
+                    showToast('Bem-vindo de volta, torcedor! 💙🦅')
+                    navigate('/home')
+                } else {
+                    showToast('E-mail ou senha incorretos 😬')
+                }
+            } else {
+                const ok = await register(name.trim(), email.trim(), pass)
+                if (ok) {
+                    showToast('Cadastro feito! Confirme seu e-mail 📧')
+                    setTab('login')
+                } else {
+                    showToast('Erro no cadastro. E-mail já usado?')
+                }
+            }
+        } finally {
             setLoading(false)
-            showToast(tab === 'login' ? 'Bem-vindo de volta, torcedor! 💙' : 'Cadastro feito! Debrê na Rede! 🦅')
-            navigate('/home')
-        }, 1200)
+        }
+    }
+
+    const handleGoogle = async () => {
+        setLoading(true)
+        const ok = await loginWithGoogle()
+        if (!ok) showToast('Erro ao entrar com Google 😬')
+        setLoading(false)
+    }
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') handleAuth()
     }
 
     return (
         <div className="login-screen">
-            {/* Background */}
             <div className="login-bg">
                 <div className="login-bg-circle-1" />
                 <div className="login-bg-circle-2" />
             </div>
 
-            {/* Back button */}
             <button className="login-back" onClick={() => navigate('/')}>
                 <ArrowLeft size={18} />
             </button>
 
-            {/* Badge + title */}
             <div className="login-header animate-scale">
                 <DebreBadge size={80} />
                 <div>
@@ -47,7 +81,6 @@ export default function LoginScreen() {
                 </div>
             </div>
 
-            {/* Card */}
             <div className="login-card animate-fade-up delay-1">
                 {/* Tabs */}
                 <div className="pill-tabs" style={{ marginBottom: 22 }}>
@@ -63,13 +96,28 @@ export default function LoginScreen() {
                     {tab === 'cadastro' && (
                         <div className="form-group">
                             <label className="form-label">Nome</label>
-                            <input className="form-input" placeholder="Seu nome, torcedor!" value={name} onChange={e => setName(e.target.value)} />
+                            <input
+                                className="form-input"
+                                placeholder="Seu nome, torcedor!"
+                                value={name}
+                                onChange={e => setName(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                autoComplete="name"
+                            />
                         </div>
                     )}
 
                     <div className="form-group">
                         <label className="form-label">E-mail</label>
-                        <input className="form-input" type="email" placeholder="seu@email.com" value={email} onChange={e => setEmail(e.target.value)} />
+                        <input
+                            className="form-input"
+                            type="email"
+                            placeholder="seu@email.com"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                            autoComplete="email"
+                        />
                     </div>
 
                     <div className="form-group">
@@ -82,6 +130,8 @@ export default function LoginScreen() {
                                 style={{ width: '100%', paddingRight: 48 }}
                                 value={pass}
                                 onChange={e => setPass(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                autoComplete={tab === 'login' ? 'current-password' : 'new-password'}
                             />
                             <button
                                 style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }}
@@ -93,7 +143,8 @@ export default function LoginScreen() {
                     </div>
 
                     {tab === 'login' && (
-                        <button className="text-xs" style={{ color: 'var(--gold)', textAlign: 'right', opacity: 0.8 }}>
+                        <button className="text-xs" style={{ color: 'var(--gold)', textAlign: 'right', opacity: 0.8 }}
+                            onClick={() => showToast('Verifique seu e-mail para redefinir a senha')}>
                             Esqueci minha senha
                         </button>
                     )}
@@ -106,11 +157,12 @@ export default function LoginScreen() {
                     >
                         {loading
                             ? <span className="btn-spinner" />
-                            : <><LogIn size={18} /> {tab === 'login' ? 'Entrar no Debrê!' : 'Criar minha conta'}</>
+                            : tab === 'login'
+                                ? <><LogIn size={18} /> Entrar no Debrê!</>
+                                : <><UserPlus size={18} /> Criar minha conta</>
                         }
                     </button>
 
-                    {/* Social */}
                     <div style={{ position: 'relative', textAlign: 'center', margin: '4px 0' }}>
                         <div className="divider" />
                         <span className="text-xs text-muted" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', background: 'rgba(13,27,62,0.95)', padding: '0 10px' }}>
@@ -118,7 +170,12 @@ export default function LoginScreen() {
                         </span>
                     </div>
 
-                    <button className="btn btn-ghost btn-full" style={{ gap: 10, border: '1px solid rgba(255,255,255,0.12)' }}>
+                    <button
+                        className="btn btn-ghost btn-full"
+                        style={{ gap: 10, border: '1px solid rgba(255,255,255,0.12)' }}
+                        onClick={handleGoogle}
+                        disabled={loading}
+                    >
                         <svg width="18" height="18" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -131,7 +188,7 @@ export default function LoginScreen() {
             </div>
 
             <p className="text-xs text-muted" style={{ textAlign: 'center', margin: '20px 16px 12px', lineHeight: 1.5 }}>
-                Ao entrar, você concorda com os Termos de Uso e a Política de Privacidade do Debre na Rede.
+                Ao entrar, você concorda com os Termos de Uso do Debre na Rede.
             </p>
         </div>
     )

@@ -19,6 +19,7 @@ import VotoScreen from './pages/VotoScreen'
 import HistoriaScreen from './pages/HistoriaScreen'
 import LoginScreen from './pages/LoginScreen'
 import MenuScreen from './pages/MenuScreen'
+import AdminScreen from './pages/AdminScreen'
 
 // Components
 import BottomNav from './components/BottomNav'
@@ -52,6 +53,7 @@ function AppShell() {
           <Route path="/voto" element={<VotoScreen />} />
           <Route path="/historia" element={<HistoriaScreen />} />
           <Route path="/menu" element={<MenuScreen />} />
+          <Route path="/admin" element={<AdminScreen />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>

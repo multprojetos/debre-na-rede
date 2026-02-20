@@ -4,6 +4,7 @@ import {
 } from 'lucide-react'
 
 import DebreBadge from '../components/DebreBadge'
+import { useAuth } from '../contexts/AuthContext'
 
 const menuItems = [
     { icon: Image, label: 'Galeria', sub: 'Fotos e vídeos do Debrê', path: '/galeria', color: '#9B59B6' },
@@ -17,6 +18,7 @@ const menuItems = [
 
 export default function MenuScreen() {
     const navigate = useNavigate()
+    const { user, isAdmin, logout } = useAuth()
 
     return (
         <div>
@@ -33,18 +35,39 @@ export default function MenuScreen() {
                     display: 'flex', gap: 14, alignItems: 'center',
                 }}>
                     <div className="avatar" style={{ width: 52, height: 52, fontSize: '1.1rem', background: 'rgba(201,162,39,0.15)', border: '2px solid rgba(201,162,39,0.4)' }}>
-                        TF
+                        {user ? user.name.slice(0, 2).toUpperCase() : 'TF'}
                     </div>
                     <div style={{ flex: 1 }}>
-                        <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1.1rem' }}>Torcedor Fiel</p>
-                        <p className="text-xs text-muted">torcedor@debrefc.com</p>
-                        <span className="badge badge-gold" style={{ marginTop: 4, fontSize: '0.6rem' }}>🦅 Torcedor Registrado</span>
+                        <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1.1rem', color: 'var(--gold)' }}>{user ? user.name : 'Torcedor Fiel'}</p>
+                        <p className="text-xs text-muted">{user ? user.email : 'torcedor@debrefc.com'}</p>
+                        <span className="badge badge-gold" style={{ marginTop: 4, fontSize: '0.6rem' }}>🦅 {isAdmin ? 'Diretoria' : 'Torcedor Registrado'}</span>
                     </div>
                     <DebreBadge size={40} />
                 </div>
 
                 {/* Menu items */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {isAdmin && (
+                        <button
+                            className="card animate-fade-up"
+                            style={{ padding: '14px 16px', display: 'flex', gap: 14, alignItems: 'center', cursor: 'pointer', textAlign: 'left', width: '100%', borderColor: 'var(--gold)' }}
+                            onClick={() => navigate('/admin')}
+                        >
+                            <div style={{
+                                width: 42, height: 42, borderRadius: 12, flexShrink: 0,
+                                background: 'rgba(201, 162, 39, 0.1)', border: '1px solid rgba(201, 162, 39, 0.3)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                color: 'var(--gold)',
+                            }}>
+                                <Shield size={20} />
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '0.95rem', color: 'var(--gold)' }}>Painel Admin</p>
+                                <p className="text-xs text-muted">Acesso restrito à diretoria</p>
+                            </div>
+                            <ChevronRight size={16} color="var(--text-muted)" />
+                        </button>
+                    )}
                     {menuItems.map(({ icon: Icon, label, sub, path, color }, i) => (
                         <button
                             key={path + label}
@@ -73,7 +96,10 @@ export default function MenuScreen() {
                 <button
                     className="btn btn-ghost btn-full"
                     style={{ marginTop: 16, gap: 10, border: '1px solid rgba(232,64,64,0.2)', color: 'var(--danger)' }}
-                    onClick={() => navigate('/')}
+                    onClick={() => {
+                        logout()
+                        navigate('/')
+                    }}
                 >
                     <LogOut size={16} /> Sair da conta
                 </button>
