@@ -18,7 +18,7 @@ export default function StatsScreen() {
         : 0
 
     return (
-        <div>
+        <div style={{ minHeight: '100dvh', paddingBottom: 80, background: '#FAF9F6' }}>
             <header className="page-header">
                 <BarChart2 size={20} color="var(--gold)" />
                 <h2 style={{ flex: 1 }}>Debre-Stats Carmense</h2>

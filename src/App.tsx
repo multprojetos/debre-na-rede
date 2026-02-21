@@ -36,27 +36,25 @@ function AppShell() {
 
   return (
     <div id="app-shell">
-      <div className={`app-content${showNav ? '' : ' full-height'}`}>
-        <Routes>
-          <Route path="/" element={<SplashScreen />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/home" element={<HomeScreen />} />
-          <Route path="/news" element={<NewsScreen />} />
-          <Route path="/news/:id" element={<NewsDetail />} />
-          <Route path="/elenco" element={<ElencoScreen />} />
-          <Route path="/elenco/:id" element={<PlayerProfile />} />
-          <Route path="/galeria" element={<GaleriaScreen />} />
-          <Route path="/manto" element={<MantoScreen />} />
-          <Route path="/stats" element={<StatsScreen />} />
-          <Route path="/resenha" element={<ResenhaScreen />} />
-          <Route path="/parceiros" element={<ParceirosScreen />} />
-          <Route path="/voto" element={<VotoScreen />} />
-          <Route path="/historia" element={<HistoriaScreen />} />
-          <Route path="/menu" element={<MenuScreen />} />
-          <Route path="/admin" element={<AdminScreen />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<SplashScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/home" element={<HomeScreen />} />
+        <Route path="/news" element={<NewsScreen />} />
+        <Route path="/news/:id" element={<NewsDetail />} />
+        <Route path="/elenco" element={<ElencoScreen />} />
+        <Route path="/elenco/:id" element={<PlayerProfile />} />
+        <Route path="/galeria" element={<GaleriaScreen />} />
+        <Route path="/manto" element={<MantoScreen />} />
+        <Route path="/stats" element={<StatsScreen />} />
+        <Route path="/resenha" element={<ResenhaScreen />} />
+        <Route path="/parceiros" element={<ParceirosScreen />} />
+        <Route path="/voto" element={<VotoScreen />} />
+        <Route path="/historia" element={<HistoriaScreen />} />
+        <Route path="/menu" element={<MenuScreen />} />
+        <Route path="/admin" element={<AdminScreen />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
       {showNav && <BottomNav />}
     </div>
   )
