@@ -8,7 +8,7 @@ const quickLinks = [
     { icon: Trophy, label: 'Voto do\nTorcedor', path: '/voto', color: '#E84040' },
     { icon: Shield, label: 'Manto\nSagrado', path: '/manto', color: '#C9A227' },
     { icon: Star, label: 'Debre\nStats', path: '/stats', color: '#27AE60' },
-    { icon: Flame, label: 'Resenha\ndo Interior', path: '/resenha', color: '#E87A40' },
+    { icon: Flame, label: 'Resenha\ndo Debre', path: '/resenha', color: '#E87A40' },
 ]
 
 function formatDate(iso: string) {
@@ -46,7 +46,7 @@ export default function HomeScreen() {
                     <span className="font-condensed" style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--text-muted)' }}>
                         Debreceni FC
                     </span>
-                    <span className="font-display" style={{ fontSize: '1.4rem', color: 'var(--cream)', lineHeight: 1 }}>
+                    <span className="font-display" style={{ fontSize: '1.4rem', color: 'var(--text-primary)', lineHeight: 1 }}>
                         DEBRE NA REDE
                     </span>
                 </div>
@@ -83,7 +83,7 @@ export default function HomeScreen() {
                                     </div>
                                 </div>
                                 <div className="match-team">
-                                    <div className="avatar" style={{ width: 52, height: 52, fontSize: '1.1rem', background: 'rgba(255,255,255,0.08)', border: '2px solid rgba(255,255,255,0.15)' }}>
+                                    <div className="avatar" style={{ width: 52, height: 52, fontSize: '1.1rem', background: 'rgba(0,0,0,0.08)', border: '2px solid rgba(0,0,0,0.15)' }}>
                                         {proximaPartida.adversario_iniciais}
                                     </div>
                                     <span className="font-condensed" style={{ fontWeight: 700, fontSize: '0.9rem' }}>{proximaPartida.adversario.split(' ')[0]}</span>
@@ -153,7 +153,7 @@ export default function HomeScreen() {
                                         <span className="badge badge-navy" style={{ fontSize: '0.62rem', padding: '2px 7px' }}>{n.categoria}</span>
                                         {n.is_hot && <span className="badge badge-live" style={{ fontSize: '0.62rem', padding: '2px 7px' }}>🔥 Hot</span>}
                                     </div>
-                                    <p style={{ fontSize: '0.88rem', fontWeight: 600, lineHeight: 1.35, color: 'var(--cream)' }}>{n.titulo}</p>
+                                    <p style={{ fontSize: '0.88rem', fontWeight: 600, lineHeight: 1.35, color: 'var(--text-primary)' }}>{n.titulo}</p>
                                     <p className="text-xs text-muted" style={{ marginTop: 4 }}>{timeAgo(n.created_at)}</p>
                                 </div>
                                 <ChevronRight size={16} className="text-muted" style={{ flexShrink: 0, marginTop: 2 }} />
@@ -170,7 +170,7 @@ export default function HomeScreen() {
                         <p className="text-xs" style={{ color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4 }}>
                             Desde 2009
                         </p>
-                        <h3 style={{ fontSize: '1.3rem', fontFamily: 'var(--font-condensed)' }}>História do Debrê</h3>
+                        <h3 style={{ fontSize: '1.3rem', fontFamily: 'var(--font-condensed)', color: 'var(--navy)' }}>História do Debreceni F. C</h3>
                         <p className="text-sm text-muted" style={{ marginTop: 4 }}>
                             A linha do tempo de um clube de paixão
                         </p>

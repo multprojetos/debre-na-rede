@@ -86,7 +86,7 @@
 
 .splash-titulo {
     font-size: 4.5rem;
-    color: var(--cream);
+    color: var(--text-primary);
     line-height: 0.9;
     letter-spacing: 0.08em;
 }

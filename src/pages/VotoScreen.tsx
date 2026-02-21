@@ -132,10 +132,10 @@ export default function VotoScreen() {
                                                 <span className="text-xs text-muted">{totalVotos} votos</span>
                                                 <span className="text-xs" style={{ color: isVoted ? 'var(--gold)' : 'var(--text-muted)' }}>{pct}%</span>
                                             </div>
-                                            <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3 }}>
+                                            <div style={{ height: 6, background: 'rgba(0,0,0,0.08)', borderRadius: 3 }}>
                                                 <div style={{
                                                     height: '100%', width: `${pct}%`,
-                                                    background: isVoted ? 'linear-gradient(90deg, var(--gold-dark), var(--gold))' : 'rgba(255,255,255,0.15)',
+                                                    background: isVoted ? 'linear-gradient(90deg, var(--gold-dark), var(--gold))' : 'rgba(0,0,0,0.15)',
                                                     borderRadius: 3, transition: 'width 0.8s ease',
                                                 }} />
                                             </div>
@@ -174,7 +174,7 @@ export default function VotoScreen() {
                                     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
                                         <div style={{ fontSize: '2.5rem', width: 56, textAlign: 'center' }}>{g.emoji}</div>
                                         <div style={{ flex: 1 }}>
-                                            <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1.05rem', color: isVoted ? 'var(--gold)' : 'var(--cream)' }}>
+                                            <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1.05rem', color: isVoted ? 'var(--gold)' : 'var(--text-primary)' }}>
                                                 Gol de {g.jogador_nome} — {g.minuto}
                                             </p>
                                             <p className="text-xs text-muted" style={{ marginTop: 3 }}>{g.descricao}</p>

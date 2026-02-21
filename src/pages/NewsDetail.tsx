@@ -89,7 +89,7 @@ export default function NewsDetail() {
                     {/* TITLE */}
                     <h1 style={{
                         fontFamily: 'Barlow Condensed', fontSize: '1.4rem', fontWeight: 800,
-                        lineHeight: 1.25, color: 'var(--cream)', marginBottom: 12,
+                        lineHeight: 1.25, color: 'var(--text-primary)', marginBottom: 12,
                     }}>
                         {n.titulo}
                     </h1>
@@ -98,14 +98,14 @@ export default function NewsDetail() {
                     <p style={{
                         fontSize: '0.95rem', color: 'var(--gold)', fontWeight: 600,
                         lineHeight: 1.6, marginBottom: 16,
-                        paddingBottom: 16, borderBottom: '1px solid rgba(255,255,255,0.06)',
+                        paddingBottom: 16, borderBottom: '1px solid rgba(0,0,0,0.06)',
                     }}>
                         {n.descricao}
                     </p>
 
                     {/* CONTENT */}
                     {n.conteudo ? (
-                        <div style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--cream)' }}>
+                        <div style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--text-primary)' }}>
                             {n.conteudo.split('\n').map((p, i) => (
                                 <p key={i} style={{ marginBottom: 12 }}>{p}</p>
                             ))}

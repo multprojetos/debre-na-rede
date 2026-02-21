@@ -68,7 +68,7 @@ export default function ResenhaScreen() {
                 <button className="page-back-btn" onClick={() => navigate(-1)}>
                     <ArrowLeft size={18} />
                 </button>
-                <h2 style={{ flex: 1 }}>Resenha do Interior</h2>
+                <h2 style={{ flex: 1 }}>Resenha do Debre</h2>
             </header>
 
             {/* MATCH LABEL */}
@@ -139,7 +139,7 @@ export default function ResenhaScreen() {
                                         <span style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '0.9rem' }}>{c.user_name}</span>
                                         <span className="text-xs text-muted">{timeAgo(c.created_at)}</span>
                                     </div>
-                                    <p style={{ fontSize: '0.88rem', lineHeight: 1.5, color: 'var(--cream)' }}>{c.texto}</p>
+                                    <p style={{ fontSize: '0.88rem', lineHeight: 1.5, color: 'var(--text-primary)' }}>{c.texto}</p>
                                     <button
                                         style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 8, color: likedSet.has(c.id) ? 'var(--gold)' : 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600 }}
                                         onClick={() => handleLike(c.id)}

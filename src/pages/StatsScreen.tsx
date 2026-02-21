@@ -114,7 +114,7 @@ export default function StatsScreen() {
                                 {tabela.map(row => (
                                     <div key={row.id} style={{
                                         display: 'flex', alignItems: 'center', gap: 10, padding: '10px 16px',
-                                        borderBottom: '1px solid rgba(255,255,255,0.04)',
+                                        borderBottom: '1px solid rgba(0,0,0,0.04)',
                                         background: row.posicao === 1 ? 'rgba(201,162,39,0.06)' : 'transparent',
                                     }}>
                                         <span style={{
@@ -124,8 +124,8 @@ export default function StatsScreen() {
                                             color: row.posicao <= 3 ? rankColors[row.posicao - 1] : 'var(--text-muted)',
                                             border: row.posicao <= 3 ? `1px solid ${rankColors[row.posicao - 1]}50` : 'none',
                                         }}>{row.posicao}</span>
-                                        <span style={{ flex: 1, fontFamily: 'Barlow Condensed', fontWeight: row.posicao === 1 ? 700 : 400, fontSize: '0.88rem', color: row.posicao === 1 ? 'var(--cream)' : 'var(--text-muted)' }}>{row.nome_time}</span>
-                                        <span style={{ fontFamily: 'Bebas Neue', fontSize: '1.1rem', color: row.posicao === 1 ? 'var(--gold)' : 'var(--cream)' }}>{row.pontos}</span>
+                                        <span style={{ flex: 1, fontFamily: 'Barlow Condensed', fontWeight: row.posicao === 1 ? 700 : 400, fontSize: '0.88rem', color: row.posicao === 1 ? 'var(--text-primary)' : 'var(--text-muted)' }}>{row.nome_time}</span>
+                                        <span style={{ fontFamily: 'Bebas Neue', fontSize: '1.1rem', color: row.posicao === 1 ? 'var(--gold)' : 'var(--text-primary)' }}>{row.pontos}</span>
                                     </div>
                                 ))}
                             </div>
@@ -146,7 +146,7 @@ export default function StatsScreen() {
                                 <div style={{
                                     width: 32, height: 32, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     fontFamily: 'Bebas Neue', fontSize: '1rem', flexShrink: 0,
-                                    background: i < 3 ? `${rankColors[i]}20` : 'rgba(255,255,255,0.06)',
+                                    background: i < 3 ? `${rankColors[i]}20` : 'rgba(0,0,0,0.06)',
                                     color: i < 3 ? rankColors[i] : 'var(--text-muted)',
                                     border: i < 3 ? `1px solid ${rankColors[i]}40` : 'none',
                                 }}>
@@ -186,7 +186,7 @@ export default function StatsScreen() {
                                 <div style={{
                                     width: 32, height: 32, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     fontFamily: 'Bebas Neue', fontSize: '1rem', flexShrink: 0,
-                                    background: i < 3 ? `${rankColors[i]}20` : 'rgba(255,255,255,0.06)',
+                                    background: i < 3 ? `${rankColors[i]}20` : 'rgba(0,0,0,0.06)',
                                     color: i < 3 ? rankColors[i] : 'var(--text-muted)',
                                 }}>
                                     {i < 3 ? ['🥇', '🥈', '🥉'][i] : a.rank}

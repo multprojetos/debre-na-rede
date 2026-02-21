@@ -9,10 +9,10 @@ import { useAuth } from '../contexts/AuthContext'
 const menuItems = [
     { icon: Image, label: 'Galeria', sub: 'Fotos e vídeos do Debrê', path: '/galeria', color: '#9B59B6' },
     { icon: Shield, label: 'Manto Sagrado', sub: 'Uniformes e pré-venda', path: '/manto', color: '#C9A227' },
-    { icon: Mic, label: 'Resenha do Interior', sub: 'Comentários pós-jogo', path: '/resenha', color: '#E87A40' },
+    { icon: Mic, label: 'Resenha do Debre', sub: 'Comentários pós-jogo', path: '/resenha', color: '#E87A40' },
     { icon: MapPin, label: 'Parceiros do Debrê', sub: 'Descontos e benefícios locais', path: '/parceiros', color: '#27AE60' },
     { icon: Trophy, label: 'Voto do Torcedor', sub: 'Craque do jogo e gol mais bonito', path: '/voto', color: '#E84040' },
-    { icon: Clock, label: 'História do Debrê', sub: 'Linha do tempo desde 2009', path: '/historia', color: '#2980B9' },
+    { icon: Clock, label: 'História do Debreceni F. C', sub: 'Linha do tempo desde 2009', path: '/historia', color: '#2980B9' },
     { icon: Settings, label: 'Configurações', sub: 'Notificações e preferências', path: '/home', color: 'var(--text-muted)' },
 ]
 

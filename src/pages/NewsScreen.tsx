@@ -151,7 +151,7 @@ export default function NewsScreen() {
                                     <span className="badge badge-navy" style={{ fontSize: '0.62rem' }}>{n.categoria}</span>
                                     {n.is_hot && <span className="badge badge-live" style={{ fontSize: '0.62rem' }}>🔥</span>}
                                 </div>
-                                <p style={{ fontWeight: 600, fontSize: '0.9rem', lineHeight: 1.35, color: 'var(--cream)' }}>{n.titulo}</p>
+                                <p style={{ fontWeight: 600, fontSize: '0.9rem', lineHeight: 1.35, color: 'var(--text-primary)' }}>{n.titulo}</p>
                                 <p className="text-xs text-muted" style={{ marginTop: 4 }}>{n.descricao.slice(0, 60)}...</p>
                                 <p className="text-xs text-muted" style={{ marginTop: 4 }}>{timeAgo(n.created_at)}</p>
                             </div>

@@ -107,7 +107,7 @@ export default function InstallPWA() {
                         🦅
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1rem', color: 'var(--cream)' }}>
+                        <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>
                             Instalar Debre na Rede
                         </p>
                         <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: 2 }}>
@@ -129,7 +129,7 @@ export default function InstallPWA() {
                         <button
                             onClick={handleDismiss}
                             style={{
-                                background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+                                background: 'rgba(0,0,0,0.06)', border: '1px solid rgba(0,0,0,0.1)',
                                 borderRadius: 10, padding: '8px', cursor: 'pointer', color: 'var(--text-muted)',
                                 display: 'flex', alignItems: 'center',
                             }}
@@ -166,7 +166,7 @@ export default function InstallPWA() {
                         🦅
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1rem', color: 'var(--cream)' }}>
+                        <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>
                             Adicionar à tela inicial
                         </p>
                         <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: 2 }}>
@@ -188,7 +188,7 @@ export default function InstallPWA() {
                         <button
                             onClick={handleDismiss}
                             style={{
-                                background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+                                background: 'rgba(0,0,0,0.06)', border: '1px solid rgba(0,0,0,0.1)',
                                 borderRadius: 10, padding: '8px', cursor: 'pointer', color: 'var(--text-muted)',
                                 display: 'flex', alignItems: 'center',
                             }}
@@ -219,7 +219,7 @@ export default function InstallPWA() {
                     >
                         <div style={{ textAlign: 'center', marginBottom: 20 }}>
                             <p style={{ fontSize: '2rem', marginBottom: 8 }}>🦅</p>
-                            <h3 style={{ fontFamily: 'Barlow Condensed', fontSize: '1.4rem', fontWeight: 800, color: 'var(--cream)' }}>
+                            <h3 style={{ fontFamily: 'Barlow Condensed', fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)' }}>
                                 Instalar no iPhone / iPad
                             </h3>
                         </div>
@@ -232,11 +232,11 @@ export default function InstallPWA() {
                             <div key={step.icon} style={{
                                 display: 'flex', alignItems: 'center', gap: 14,
                                 padding: '14px', marginBottom: 10,
-                                background: 'rgba(255,255,255,0.05)', borderRadius: 12,
-                                border: '1px solid rgba(255,255,255,0.08)',
+                                background: 'rgba(0,0,0,0.05)', borderRadius: 12,
+                                border: '1px solid rgba(0,0,0,0.08)',
                             }}>
                                 <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>{step.icon}</span>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--cream)', lineHeight: 1.4 }}>{step.text}</p>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.4 }}>{step.text}</p>
                             </div>
                         ))}
 
@@ -244,7 +244,7 @@ export default function InstallPWA() {
                             onClick={() => { setShowIOSGuide(false); handleDismiss() }}
                             style={{
                                 width: '100%', marginTop: 16, padding: '14px',
-                                background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)',
+                                background: 'rgba(0,0,0,0.08)', border: '1px solid rgba(0,0,0,0.12)',
                                 borderRadius: 12, color: 'var(--text-muted)', fontFamily: 'Barlow Condensed',
                                 fontWeight: 700, fontSize: '1rem', cursor: 'pointer',
                             }}

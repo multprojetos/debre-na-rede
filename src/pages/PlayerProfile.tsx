@@ -128,7 +128,7 @@ export default function PlayerProfile() {
                             <span className="text-xs text-muted">Gols / Jogo</span>
                             <span className="text-xs" style={{ color: 'var(--gold)' }}>{p.jogos > 0 ? (p.gols / p.jogos).toFixed(2) : '0.00'}</span>
                         </div>
-                        <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3 }}>
+                        <div style={{ height: 6, background: 'rgba(0,0,0,0.08)', borderRadius: 3 }}>
                             <div style={{
                                 height: '100%', width: `${Math.min(aproveitamento * 3, 100)}%`,
                                 background: `linear-gradient(90deg, ${color}80, ${color})`,
@@ -142,7 +142,7 @@ export default function PlayerProfile() {
                             <span className="text-xs text-muted">Assists / Jogo</span>
                             <span className="text-xs" style={{ color: '#27AE60' }}>{p.jogos > 0 ? (p.assists / p.jogos).toFixed(2) : '0.00'}</span>
                         </div>
-                        <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3 }}>
+                        <div style={{ height: 6, background: 'rgba(0,0,0,0.08)', borderRadius: 3 }}>
                             <div style={{
                                 height: '100%', width: `${Math.min((p.assists / Math.max(p.jogos, 1)) * 100 * 3, 100)}%`,
                                 background: 'linear-gradient(90deg, #27AE6080, #27AE60)',
@@ -156,7 +156,7 @@ export default function PlayerProfile() {
                 {p.bio && (
                     <div className="card" style={{ padding: '16px' }}>
                         <p className="section-title" style={{ background: 'none', marginBottom: 8 }}>Sobre o Jogador</p>
-                        <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: 'var(--cream)' }}>{p.bio}</p>
+                        <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: 'var(--text-primary)' }}>{p.bio}</p>
                     </div>
                 )}
             </div>

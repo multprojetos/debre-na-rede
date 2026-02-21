@@ -49,7 +49,7 @@ export default function HistoriaScreen() {
                 <button className="page-back-btn" onClick={() => navigate(-1)}>
                     <ArrowLeft size={18} />
                 </button>
-                <h2 style={{ flex: 1 }}>História do Debrê</h2>
+                <h2 style={{ flex: 1 }}>História do Debreceni F. C</h2>
             </header>
 
             {/* HERO */}
@@ -106,7 +106,7 @@ export default function HistoriaScreen() {
                                         border: `1px solid ${item.color}40`, letterSpacing: '0.06em',
                                     }}>{item.year}</span>
                                 </div>
-                                <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1rem', marginBottom: 6, color: 'var(--cream)' }}>
+                                <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1rem', marginBottom: 6, color: 'var(--text-primary)' }}>
                                     {item.title}
                                 </p>
                                 <p style={{ fontSize: '0.85rem', lineHeight: 1.55, color: 'var(--text-muted)' }}>

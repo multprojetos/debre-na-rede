@@ -76,7 +76,7 @@ export default function LoginScreen() {
             <div className="login-header animate-scale">
                 <DebreBadge size={80} />
                 <div>
-                    <p className="font-display" style={{ fontSize: '2rem', color: 'var(--cream)', lineHeight: 1 }}>DEBRE</p>
+                    <p className="font-display" style={{ fontSize: '2rem', color: 'var(--text-primary)', lineHeight: 1 }}>DEBRE</p>
                     <p className="font-display" style={{ fontSize: '2rem', color: 'var(--gold)', lineHeight: 1 }}>NA REDE</p>
                 </div>
             </div>
@@ -172,7 +172,7 @@ export default function LoginScreen() {
 
                     <button
                         className="btn btn-ghost btn-full"
-                        style={{ gap: 10, border: '1px solid rgba(255,255,255,0.12)' }}
+                        style={{ gap: 10, border: '1px solid rgba(0,0,0,0.12)' }}
                         onClick={handleGoogle}
                         disabled={loading}
                     >
