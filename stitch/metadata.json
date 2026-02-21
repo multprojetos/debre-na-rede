@@ -1,0 +1,9 @@
+{
+  "name": "Debre na Rede",
+  "description": "Aplicativo oficial do torcedor do Debreceni F.C. com notícias, elenco, loja e interatividade.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

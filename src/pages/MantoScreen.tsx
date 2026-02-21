@@ -1,138 +1,108 @@
-import { useState, useContext } from 'react'
-import { ArrowLeft, ShoppingBag } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
-import { ToastCtx } from '../App'
-import { useMantos } from '../hooks/useConteudo'
+import { useState, useContext } from 'react';
+import { ArrowLeft, ShoppingBag, ShoppingCart, Shield } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ToastCtx } from '../App';
+import { useMantos } from '../hooks/useConteudo';
+import { cn } from '../lib/utils';
 
 export default function MantoScreen() {
-    const navigate = useNavigate()
-    const showToast = useContext(ToastCtx)
-    const { mantos, loading } = useMantos()
-    const [selected, setSelected] = useState<number | null>(null)
+    const navigate = useNavigate();
+    const showToast = useContext(ToastCtx);
+    const { mantos, loading } = useMantos();
+    const [selectedCat, setSelectedCat] = useState('Todos');
 
-    const novosMantos = mantos.filter(m => m.is_new)
-    const destaque = novosMantos[0] ?? mantos[0]
+    const novosMantos = mantos.filter(m => m.is_new);
+    const destaque = novosMantos[0] ?? mantos[0];
 
     return (
-        <div>
-            <header className="page-header">
-                <button className="page-back-btn" onClick={() => navigate(-1)}>
-                    <ArrowLeft size={18} />
+        <div className="bg-[#FAF9F6] font-['Lexend'] text-[#0d1b3f] antialiased min-h-screen pb-24">
+            <header className="sticky top-0 z-50 flex items-center gap-3 bg-[#FAF9F6]/80 backdrop-blur-md px-5 py-4 border-b border-[#0d1b3f]/5">
+                <button onClick={() => navigate(-1)} className="p-2 -ml-2 text-[#0d1b3f] active:scale-95 transition-transform">
+                    <ArrowLeft className="w-6 h-6" />
                 </button>
-                <h2 style={{ flex: 1 }}>Manto Sagrado</h2>
+                <div className="flex-1">
+                    <h1 className="text-lg font-bold leading-none tracking-tight">Manto Sagrado</h1>
+                    <p className="text-[10px] uppercase tracking-widest text-[#0d1b3f]/60 font-medium">Debre na Rede FC</p>
+                </div>
             </header>
 
-            <div style={{ padding: '16px' }}>
-                {/* NEW MANTO HIGHLIGHT */}
-                {!loading && destaque && (
-                    <div className="card card-glow" style={{
-                        padding: '20px', marginBottom: 20,
-                        background: 'linear-gradient(135deg, #1E3370, #0D1B3E)',
-                        position: 'relative', overflow: 'hidden',
-                    }}>
-                        <div style={{ position: 'absolute', top: -30, right: -30, fontSize: '8rem', opacity: 0.08 }}>👕</div>
-                        {destaque.is_new && <span className="badge badge-live" style={{ marginBottom: 10 }}>🆕 Novo Manto</span>}
-                        <h2 style={{ fontFamily: 'Barlow Condensed', fontSize: '1.5rem', fontWeight: 800, marginBottom: 4 }}>
-                            Uniforme {destaque.ano} — {destaque.tipo}
-                        </h2>
-                        <p className="text-sm text-muted" style={{ marginBottom: 14, lineHeight: 1.5 }}>
-                            {destaque.descricao ?? `${destaque.cor_nome}. Garanta o seu, mermão!`}
-                        </p>
-                        <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 14 }}>
-                            {destaque.preco ? (
-                                <>
-                                    <span style={{ fontFamily: 'Bebas Neue', fontSize: '1.6rem', color: 'var(--gold)' }}>
-                                        R$ {destaque.preco.toFixed(2)}
-                                    </span>
-                                    {destaque.preco_original && (
-                                        <>
-                                            <span className="text-xs text-muted" style={{ textDecoration: 'line-through' }}>
-                                                R$ {destaque.preco_original.toFixed(2)}
-                                            </span>
-                                            <span className="badge badge-green">
-                                                -{Math.round((1 - destaque.preco / destaque.preco_original) * 100)}%
-                                            </span>
-                                        </>
-                                    )}
-                                </>
+            <div className="flex gap-3 px-5 py-6 overflow-x-auto no-scrollbar">
+                {['Todos', 'Titular', 'Reserva', 'Retrô', 'Treino'].map((cat, i) => (
+                    <button
+                        key={cat}
+                        onClick={() => setSelectedCat(cat)}
+                        className={cn(
+                            "flex h-10 shrink-0 items-center justify-center rounded-full px-6 text-sm font-semibold transition-all",
+                            selectedCat === cat ? "bg-[#0d1b3f] text-white shadow-lg shadow-[#0d1b3f]/20" : "bg-white border border-[#0d1b3f]/10 text-[#0d1b3f]"
+                        )}>
+                        {cat}
+                    </button>
+                ))}
+            </div>
+
+            {!loading && destaque && (
+                <section className="px-5 mb-8">
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1E3370] to-[#0D1B3E] shadow-xl shadow-[#0D1B3E]/10 aspect-[16/10] flex items-center justify-between p-6">
+                        <div className="absolute -right-10 -top-10 size-40 rounded-full bg-[#C9A227]/10 blur-3xl"></div>
+                        <div className="z-10 w-[60%]">
+                            {destaque.is_new && <span className="inline-block bg-[#C9A227]/20 text-[#C9A227] text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded mb-2">NOVO</span>}
+                            <h2 className="text-white text-2xl font-bold leading-tight mb-2 font-['Barlow_Condensed'] uppercase">{destaque.tipo} {destaque.ano}</h2>
+                            <p className="text-slate-300 text-xs mb-4">{destaque.descricao ?? `${destaque.cor_nome}. Garanta o seu!`}</p>
+                            <p className="text-[#C9A227] font-['Bebas_Neue'] text-2xl mb-4 tracking-wider">
+                                R$ {destaque.preco?.toFixed(2)}
+                            </p>
+                            <button onClick={() => showToast('Reserva feita! Entraremos em contato! 📦')} className="bg-[#C9A227] hover:bg-[#C9A227]/90 text-[#0d1b3f] font-bold py-2 px-5 rounded-lg text-sm transition-colors active:scale-95 shadow-lg shadow-[#C9A227]/20">
+                                Reservar
+                            </button>
+                        </div>
+                        <div className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[45%] h-[120%] flex items-center justify-center opacity-70">
+                            <span className="text-8xl drop-shadow-2xl">{destaque.emoji || '👕'}</span>
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            <div className="grid grid-cols-1 gap-6 px-5 pb-24">
+                <h3 className="text-sm font-bold uppercase tracking-widest text-[#0d1b3f]/40">História dos Mantos</h3>
+                {loading ? (
+                    <div className="flex flex-col gap-6">
+                        {[1, 2, 3].map(i => (
+                            <div key={i} className="h-64 bg-slate-100 animate-pulse rounded-2xl w-full"></div>
+                        ))}
+                    </div>
+                ) : mantos.map(manto => (
+                    <div key={manto.id} className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-100">
+                        <div className="relative aspect-[4/3] overflow-hidden bg-slate-50 flex items-center justify-center">
+                            <div className="absolute top-3 left-3 z-10 flex gap-2">
+                                <span className="bg-white/80 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-bold text-[#0d1b3f] uppercase tracking-tighter shadow-sm">{manto.tipo} {manto.ano}</span>
+                                {manto.is_new && <span className="bg-[#E84040]/10 text-[#E84040] px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Novo</span>}
+                            </div>
+                            <span className={cn("text-8xl transition-transform duration-500 group-hover:scale-110 drop-shadow-xl", manto.esgotado && "grayscale opacity-50")}>
+                                {manto.emoji || '👕'}
+                            </span>
+                        </div>
+                        <div className="flex flex-col p-4 border-t border-slate-50">
+                            <div className="flex justify-between items-start mb-1">
+                                <h4 className="text-base font-bold text-[#0d1b3f]">{manto.cor_nome || 'Uniforme'}</h4>
+                                <span className={cn("text-lg font-bold font-['Barlow_Condensed'] tracking-wider", manto.esgotado ? "text-slate-400" : "text-[#C9A227]")}>
+                                    {manto.esgotado ? 'Esgotado' : manto.preco ? `R$ ${manto.preco.toFixed(2)}` : '—'}
+                                </span>
+                            </div>
+                            <p className="text-xs text-slate-500 mb-4 leading-relaxed line-clamp-2">{manto.descricao || 'Camisa oficial do clube com alto padrão e qualidade.'}</p>
+                            {!manto.esgotado ? (
+                                <button onClick={() => showToast('Reserva feita! 🏆')} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20 py-3 text-sm font-bold text-[#0d1b3f] transition-all active:scale-[0.98] hover:bg-[#C9A227] hover:text-[#0d1b3f]">
+                                    <ShoppingCart className="w-4 h-4" />
+                                    Comprar
+                                </button>
                             ) : (
-                                <span style={{ fontFamily: 'Bebas Neue', fontSize: '1.4rem', color: 'var(--text-muted)' }}>Esgotado</span>
+                                <button disabled className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-100 py-3 text-sm font-bold text-slate-400 cursor-not-allowed">
+                                    Esgotado
+                                </button>
                             )}
                         </div>
-                        <div style={{ display: 'flex', gap: 10 }}>
-                            <button className="btn btn-primary" style={{ flex: 1, gap: 8 }}
-                                onClick={() => showToast('Reserva feita! Entraremos em contato! 📦')}>
-                                <ShoppingBag size={16} /> Ver o Manto!
-                            </button>
-                            <button className="btn btn-outline" style={{ flex: 1 }}
-                                onClick={() => showToast('Pré-venda registrada! 🦅')}>
-                                Pré-venda
-                            </button>
-                        </div>
                     </div>
-                )}
-
-                {loading && <div className="skeleton" style={{ height: 200, borderRadius: 12, marginBottom: 20 }} />}
-
-                {/* GALLERY GRID */}
-                <p className="section-title" style={{ marginBottom: 14 }}>História dos Mantos</p>
-                {loading ? (
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                        {Array.from({ length: 6 }).map((_, i) => (
-                            <div key={i} className="skeleton" style={{ height: 160, borderRadius: 12 }} />
-                        ))}
-                    </div>
-                ) : (
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                        {mantos.map((u, i) => (
-                            <button
-                                key={u.id}
-                                className={`card animate-fade-up delay-${Math.min(i + 1, 6)}`}
-                                style={{
-                                    padding: '16px', textAlign: 'center', position: 'relative',
-                                    border: selected === u.id ? '1.5px solid var(--gold)' : undefined,
-                                    cursor: 'pointer',
-                                }}
-                                onClick={() => setSelected(selected === u.id ? null : u.id)}
-                            >
-                                {u.is_new && <span className="badge badge-live" style={{ position: 'absolute', top: 8, right: 8, fontSize: '0.58rem', padding: '2px 6px' }}>NOVO</span>}
-                                <div style={{
-                                    fontSize: '4rem', marginBottom: 10, height: 72,
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    filter: u.esgotado ? 'grayscale(0.7) opacity(0.6)' : 'none',
-                                }}>
-                                    {u.emoji}
-                                </div>
-                                <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '0.95rem' }}>
-                                    {u.tipo} {u.ano}
-                                </p>
-                                <p className="text-xs text-muted" style={{ marginTop: 2 }}>{u.cor_nome}</p>
-                                <p style={{
-                                    marginTop: 8, fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '0.9rem',
-                                    color: u.esgotado ? 'var(--text-muted)' : 'var(--gold)',
-                                }}>
-                                    {u.esgotado ? 'Esgotado' : u.preco ? `R$ ${u.preco.toFixed(2)}` : '—'}
-                                </p>
-                                {selected === u.id && !u.esgotado && (
-                                    <button
-                                        className="btn btn-primary btn-sm btn-full"
-                                        style={{ marginTop: 10 }}
-                                        onClick={(e) => { e.stopPropagation(); showToast('Reserva feita! 🏆') }}
-                                    >
-                                        Reservar
-                                    </button>
-                                )}
-                            </button>
-                        ))}
-                    </div>
-                )}
-
-                <div className="card" style={{ padding: '14px 16px', marginTop: 14 }}>
-                    <p className="text-xs text-muted" style={{ lineHeight: 1.6, textAlign: 'center' }}>
-                        📦 Entrega para Carmo-RJ e região · 📲 Pedidos pelo app · ✉️ contato@debrefc.com.br
-                    </p>
-                </div>
+                ))}
             </div>
         </div>
-    )
+    );
 }

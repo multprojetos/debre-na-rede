@@ -1,117 +1,135 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom';
 import {
-    ChevronRight, Image, LogOut, MapPin, Mic, Settings, Shield, Trophy, Clock,
-} from 'lucide-react'
+    ChevronRight, Image as ImageIcon, LogOut, MapPin, Mic, Settings, Shield, Trophy, Clock, Search, Menu as MenuIcon, Edit3, Stars, Newspaper, ShieldCheck
+} from 'lucide-react';
 
-import DebreBadge from '../components/DebreBadge'
-import { useAuth } from '../contexts/AuthContext'
-
-const menuItems = [
-    { icon: Image, label: 'Galeria', sub: 'Fotos e vídeos do Debrê', path: '/galeria', color: '#9B59B6' },
-    { icon: Shield, label: 'Manto Sagrado', sub: 'Uniformes e pré-venda', path: '/manto', color: '#C9A227' },
-    { icon: Mic, label: 'Resenha do Debre', sub: 'Comentários pós-jogo', path: '/resenha', color: '#E87A40' },
-    { icon: MapPin, label: 'Parceiros do Debrê', sub: 'Descontos e benefícios locais', path: '/parceiros', color: '#27AE60' },
-    { icon: Trophy, label: 'Voto do Torcedor', sub: 'Craque do jogo e gol mais bonito', path: '/voto', color: '#E84040' },
-    { icon: Clock, label: 'História do Debreceni F. C', sub: 'Linha do tempo desde 2009', path: '/historia', color: '#2980B9' },
-    { icon: Settings, label: 'Configurações', sub: 'Notificações e preferências', path: '/home', color: 'var(--text-muted)' },
-]
+import DebreBadge from '../components/DebreBadge';
+import { useAuth } from '../contexts/AuthContext';
+import { cn } from '../lib/utils';
 
 export default function MenuScreen() {
-    const navigate = useNavigate()
-    const { user, isAdmin, logout } = useAuth()
+    const navigate = useNavigate();
+    const { user, isAdmin, logout } = useAuth();
 
     return (
-        <div>
-            <header className="page-header">
-                <h2 style={{ flex: 1 }}>Mais do Debrê</h2>
+        <div className="bg-[#FAF9F6] text-[#0d1b3f] min-h-screen flex flex-col font-['Lexend'] pb-24">
+            <header className="sticky top-0 z-50 bg-[#FAF9F6]/80 backdrop-blur-md px-4 py-4 flex items-center justify-between border-b border-[#0d1b3f]/5">
+                <div className="flex items-center gap-2">
+                    <DebreBadge size={32} />
+                    <h1 className="text-xl font-bold tracking-tight text-[#0d1b3f] font-['Barlow_Condensed'] uppercase tracking-wider">Menu</h1>
+                </div>
+                <button className="p-2 rounded-full hover:bg-[#0d1b3f]/5 text-[#C9A227]">
+                    <Search className="w-5 h-5" />
+                </button>
             </header>
 
-            {/* Profile card */}
-            <div style={{ padding: '16px 16px 8px' }}>
-                <div className="card" style={{
-                    padding: '16px', marginBottom: 16,
-                    background: 'linear-gradient(135deg, rgba(30,51,112,0.9), rgba(13,27,62,0.95))',
-                    border: '1px solid rgba(201,162,39,0.25)',
-                    display: 'flex', gap: 14, alignItems: 'center',
-                }}>
-                    <div className="avatar" style={{ width: 52, height: 52, fontSize: '1.1rem', background: 'rgba(201,162,39,0.15)', border: '2px solid rgba(201,162,39,0.4)' }}>
-                        {user ? user.name.slice(0, 2).toUpperCase() : 'TF'}
+            <main className="flex-1 overflow-y-auto px-4 py-6 no-scrollbar">
+                {/* Profile Card */}
+                <div className="bg-white rounded-xl p-5 mb-8 shadow-sm border border-slate-100 flex items-center gap-4 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#C9A227]/5 to-transparent rounded-bl-full pointer-events-none"></div>
+                    <div className="relative">
+                        <div className="flex size-16 rounded-full bg-[#0D1B3E] overflow-hidden border-2 border-[#C9A227] text-white items-center justify-center text-xl font-bold">
+                            {user ? user.name.slice(0, 2).toUpperCase() : 'TF'}
+                        </div>
                     </div>
-                    <div style={{ flex: 1 }}>
-                        <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1.1rem', color: 'var(--gold)' }}>{user ? user.name : 'Torcedor Fiel'}</p>
-                        <p className="text-xs text-muted">{user ? user.email : 'torcedor@debrefc.com'}</p>
-                        <span className="badge badge-gold" style={{ marginTop: 4, fontSize: '0.6rem' }}>🦅 {isAdmin ? 'Diretoria' : 'Torcedor Registrado'}</span>
+                    <div className="flex flex-col gap-1 z-10">
+                        <h2 className="text-lg font-bold text-[#0d1b3f] leading-tight font-['Barlow_Condensed']">{user ? user.name : 'Torcedor Fiel'}</h2>
+                        <div className="inline-flex items-center bg-[#C9A227]/10 px-2 py-0.5 rounded border border-[#C9A227]/20 self-start">
+                            <Stars className="w-3 h-3 text-[#C9A227] mr-1 fill-current" />
+                            <span className="text-[#C9A227] text-[10px] font-bold uppercase tracking-wider">{isAdmin ? 'Diretoria' : 'Torcedor Registrado'}</span>
+                        </div>
+                        <p className="text-slate-400 text-xs font-medium mt-1">{user ? user.email : 'Faça login para salvar votos e histórico'}</p>
                     </div>
-                    <DebreBadge size={40} />
                 </div>
 
-                {/* Menu items */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {isAdmin && (
-                        <button
-                            className="card animate-fade-up"
-                            style={{ padding: '14px 16px', display: 'flex', gap: 14, alignItems: 'center', cursor: 'pointer', textAlign: 'left', width: '100%', borderColor: 'var(--gold)' }}
-                            onClick={() => navigate('/admin')}
-                        >
-                            <div style={{
-                                width: 42, height: 42, borderRadius: 12, flexShrink: 0,
-                                background: 'rgba(201, 162, 39, 0.1)', border: '1px solid rgba(201, 162, 39, 0.3)',
-                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                color: 'var(--gold)',
-                            }}>
-                                <Shield size={20} />
-                            </div>
-                            <div style={{ flex: 1 }}>
-                                <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '0.95rem', color: 'var(--gold)' }}>Painel Admin</p>
-                                <p className="text-xs text-muted">Acesso restrito à diretoria</p>
-                            </div>
-                            <ChevronRight size={16} color="var(--text-muted)" />
-                        </button>
-                    )}
-                    {menuItems.map(({ icon: Icon, label, sub, path, color }, i) => (
-                        <button
-                            key={path + label}
-                            className={`card animate-fade-up delay-${Math.min(i + 1, 6)}`}
-                            style={{ padding: '14px 16px', display: 'flex', gap: 14, alignItems: 'center', cursor: 'pointer', textAlign: 'left', width: '100%' }}
-                            onClick={() => navigate(path)}
-                        >
-                            <div style={{
-                                width: 42, height: 42, borderRadius: 12, flexShrink: 0,
-                                background: `${color}18`, border: `1px solid ${color}30`,
-                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                color,
-                            }}>
-                                <Icon size={20} />
-                            </div>
-                            <div style={{ flex: 1 }}>
-                                <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '0.95rem' }}>{label}</p>
-                                <p className="text-xs text-muted">{sub}</p>
-                            </div>
-                            <ChevronRight size={16} color="var(--text-muted)" />
-                        </button>
-                    ))}
+                <div className="space-y-6">
+                    {/* Clube e Conteúdo */}
+                    <div>
+                        <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 mb-3">Clube e Conteúdo</h3>
+                        <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
+                            {[
+                                { icon: ImageIcon, label: 'Galeria de Fotos', path: '/galeria', color: 'text-purple-600', bg: 'bg-purple-100' },
+                                { icon: Clock, label: 'História do Debreceni', path: '/historia', color: 'text-blue-600', bg: 'bg-blue-100' },
+                                { icon: Newspaper, label: 'Notícias', path: '/news', color: 'text-emerald-600', bg: 'bg-emerald-100' },
+                                { icon: Shield, label: 'Loja Sagrada', path: '/manto', color: 'text-[#C9A227]', bg: 'bg-[#C9A227]/10' },
+                            ].map((item, idx, arr) => (
+                                <button key={item.path} onClick={() => navigate(item.path)} className={cn("w-full flex items-center justify-between px-4 py-4 active:bg-slate-50 transition-colors", idx !== arr.length - 1 && "border-b border-slate-50")}>
+                                    <div className="flex items-center gap-4">
+                                        <div className={cn("size-10 rounded-lg flex items-center justify-center", item.bg, item.color)}>
+                                            <item.icon className="w-5 h-5" />
+                                        </div>
+                                        <span className="text-sm font-bold text-[#0D1B3E] font-['Barlow_Condensed']">{item.label}</span>
+                                    </div>
+                                    <ChevronRight className="w-5 h-5 text-slate-300" />
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Interação do Torcedor */}
+                    <div>
+                        <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 mb-3">Interação do Torcedor</h3>
+                        <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
+                            {[
+                                { icon: Mic, label: 'Resenha do Debre', path: '/resenha', color: 'text-[#E87A40]', bg: 'bg-[#E87A40]/10' },
+                                { icon: Trophy, label: 'Votação Fanático', path: '/voto', color: 'text-[#E84040]', bg: 'bg-[#E84040]/10' },
+                                { icon: MapPin, label: 'Parceiros de Desconto', path: '/parceiros', color: 'text-[#27AE60]', bg: 'bg-[#27AE60]/10' },
+                            ].map((item, idx, arr) => (
+                                <button key={item.path} onClick={() => navigate(item.path)} className={cn("w-full flex items-center justify-between px-4 py-4 active:bg-slate-50 transition-colors", idx !== arr.length - 1 && "border-b border-slate-50")}>
+                                    <div className="flex items-center gap-4">
+                                        <div className={cn("size-10 rounded-lg flex items-center justify-center", item.bg, item.color)}>
+                                            <item.icon className="w-5 h-5" />
+                                        </div>
+                                        <span className="text-sm font-bold text-[#0D1B3E] font-['Barlow_Condensed']">{item.label}</span>
+                                    </div>
+                                    <ChevronRight className="w-5 h-5 text-slate-300" />
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Administração */}
+                    <div>
+                        <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 mb-3">Administração e Conta</h3>
+                        <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
+                            {isAdmin && (
+                                <button onClick={() => navigate('/admin')} className="w-full flex items-center justify-between px-4 py-4 active:bg-slate-50 border-b border-slate-50 transition-colors">
+                                    <div className="flex items-center gap-4">
+                                        <div className="size-10 rounded-lg bg-[#0D1B3E] text-[#C9A227] flex items-center justify-center">
+                                            <ShieldCheck className="w-5 h-5" />
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-sm font-bold text-[#0D1B3E] font-['Barlow_Condensed']">Painel Diretoria</p>
+                                            <p className="text-[10px] text-slate-400">Restrito a administradores</p>
+                                        </div>
+                                    </div>
+                                    <ChevronRight className="w-5 h-5 text-slate-300" />
+                                </button>
+                            )}
+                            <button className="w-full flex items-center justify-between px-4 py-4 active:bg-slate-50 transition-colors">
+                                <div className="flex items-center gap-4">
+                                    <div className="size-10 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center">
+                                        <Settings className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-sm font-bold text-[#0D1B3E] font-['Barlow_Condensed']">Configurações</span>
+                                </div>
+                                <ChevronRight className="w-5 h-5 text-slate-300" />
+                            </button>
+                        </div>
+                    </div>
+
+                    <button onClick={() => { logout(); navigate('/'); }} className="w-full flex items-center justify-center gap-2 py-4 text-red-600 font-bold bg-white rounded-xl border border-red-100 active:scale-[0.98] transition-all shadow-sm">
+                        <LogOut className="w-4 h-4" />
+                        Sair da Conta
+                    </button>
                 </div>
 
-                {/* Logout */}
-                <button
-                    className="btn btn-ghost btn-full"
-                    style={{ marginTop: 16, gap: 10, border: '1px solid rgba(232,64,64,0.2)', color: 'var(--danger)' }}
-                    onClick={() => {
-                        logout()
-                        navigate('/')
-                    }}
-                >
-                    <LogOut size={16} /> Sair da conta
-                </button>
-
-                {/* Footer */}
-                <div style={{ textAlign: 'center', padding: '20px 0 8px' }}>
-                    <DebreBadge size={40} />
-                    <p className="text-xs text-muted" style={{ marginTop: 8 }}>Debre na Rede v1.0.0</p>
-                    <p className="text-xs text-muted">Debreceni FC · Carmo-RJ · Since 2009</p>
-                    <p className="text-xs" style={{ color: 'var(--gold)', marginTop: 4, opacity: 0.7 }}>Feito com 💙 pela torcida</p>
+                <div className="mt-12 mb-8 text-center opacity-70">
+                    <DebreBadge size={40} className="mx-auto grayscale opacity-50 mb-4" />
+                    <div className="text-xs font-bold uppercase tracking-widest mb-1 font-['Barlow_Condensed']">Debre na Rede v2.5.0</div>
+                    <div className="text-[10px] font-medium text-slate-400">Designed with Passion in Carmo-RJ</div>
                 </div>
-            </div>
+            </main>
         </div>
-    )
+    );
 }

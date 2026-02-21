@@ -1,133 +1,102 @@
-import { ArrowLeft } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
-import DebreBadge from '../components/DebreBadge'
+import { ArrowLeft, Trophy, Star, ArrowRight, Flag } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import DebreBadge from '../components/DebreBadge';
 
 const timeline = [
     {
-        year: '2009', icon: '🦅', color: '#C9A227',
+        year: '2009', icon: '🦅', color: '#C9A227', side: 'right',
         title: 'Fundação do Debreceni FC',
         desc: 'Um grupo de amigos apaixonados pelo futebol funda o clube no bairro, em Carmo-RJ. O nome é uma homenagem à cidade húngara de Debrecen, terra de um dos fundadores.',
     },
     {
-        year: '2011', icon: '🏆', color: '#C9A227',
-        title: 'Primeiro Título Municipal',
-        desc: 'Com time invicto na fase de grupos, o Debrê conquista pela primeira vez o campeonato municipal de Carmo. A festa tomou a cidade!',
+        year: '2011', icon: '🏆', color: '#C9A227', side: 'left',
+        title: 'Primeiro Título Amador',
+        desc: 'O Debrê conquista seu primeiro campeonato municipal, entrando de vez para o mapa do esporte carmense com uma vitória heroica nos pênaltis.',
     },
     {
-        year: '2014', icon: '👕', color: '#2980B9',
-        title: 'Primeiro Manto Oficial',
-        desc: 'O clube estreia o primeiro uniforme oficial com as cores azul marinho e creme, que se tornam a identidade permanente do Debrê.',
+        year: '2015', icon: '⚽', color: '#1E3370', side: 'right',
+        title: 'A Nova Era',
+        desc: 'Expansão do quadro de sócios, profissionalização da diretoria e lançamento do novo escudo (que usamos até hoje).',
     },
     {
-        year: '2017', icon: '⭐', color: '#E84040',
-        title: 'Criação da Categoria Master',
-        desc: 'O clube expande criando a categoria Master, garantindo que os veteranos fundadores continuem jogando. Ideia genial do presidente Carlão!',
+        year: '2018', icon: '🏟️', color: '#27AE60', side: 'left',
+        title: 'Invencibilidade Histórica',
+        desc: 'Uma temporada dos sonhos! Foram 14 partidas sem nenhuma derrota, um recorde que até hoje causa orgulho na nossa torcida.',
     },
     {
-        year: '2020', icon: '🔵', color: '#2980B9',
-        title: 'Registro Oficial na Federação',
-        desc: 'O Debreceni FC passa a ser registrado oficialmente, garantindo participação em competições regionais do estado do Rio de Janeiro.',
+        year: '2022', icon: '📱', color: '#E87A40', side: 'right',
+        title: 'Debre na Rede',
+        desc: 'Nasce o Debre na Rede, o app oficial para aproximar os torcedores, com placares ao vivo, galeria e resenhas pós-jogo.',
     },
-    {
-        year: '2023', icon: '📱', color: '#9B59B6',
-        title: 'Debrê nas Redes Sociais',
-        desc: 'O perfil @debrefc no Instagram é criado e rapidamente conquista a torcida de Carmo com fotos, vídeos e a resenha do interior!',
-    },
-    {
-        year: '2026', icon: '🚀', color: '#27AE60',
-        title: 'Debre na Rede — O App!',
-        desc: 'O clube lança seu aplicativo oficial, conectando torcedores, jogadores e parceiros de toda a região em um só lugar. Coé, Debrê!',
-    },
-]
+];
 
 export default function HistoriaScreen() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
-        <div>
-            <header className="page-header">
-                <button className="page-back-btn" onClick={() => navigate(-1)}>
-                    <ArrowLeft size={18} />
+        <div className="bg-[#FAF9F6] text-[#0d1b3f] min-h-screen pb-24 font-['Lexend'] relative shadow-lg">
+            <header className="sticky top-0 z-50 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-[#0d1b3f]/5 px-4 py-4 flex items-center justify-between shadow-sm">
+                <button onClick={() => navigate(-1)} className="text-[#0d1b3f] hover:bg-slate-100 p-2 rounded-full -ml-2 transition-colors">
+                    <ArrowLeft className="w-6 h-6" />
                 </button>
-                <h2 style={{ flex: 1 }}>História do Debreceni F. C</h2>
+                <div className="flex flex-col items-center">
+                    <h1 className="text-lg font-bold tracking-tight text-[#0d1b3f] uppercase font-['Barlow_Condensed'] leading-none">Nossa História</h1>
+                    <span className="text-[10px] uppercase tracking-widest text-[#C9A227] font-bold">Debre na Rede</span>
+                </div>
+                <div className="w-10"></div>
             </header>
 
-            {/* HERO */}
-            <div style={{
-                padding: '28px 20px',
-                background: 'linear-gradient(170deg, #1E3370 0%, #0D1B3E 100%)',
-                borderBottom: '1px solid rgba(201,162,39,0.2)',
-                textAlign: 'center',
-            }}>
-                <DebreBadge size={80} className="animate-float" />
-                <h1 style={{ fontFamily: 'Barlow Condensed', fontSize: '1.8rem', fontWeight: 800, marginTop: 14, lineHeight: 1.1 }}>
-                    Debreceni FC
-                </h1>
-                <p className="text-sm text-muted" style={{ marginTop: 6 }}>Fundado em 2009 · Carmo-RJ · Futebol amador com paixão profissional</p>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 16 }}>
-                    <div className="stat-box" style={{ minWidth: 70 }}><span className="stat-value">15+</span><span className="stat-label">Anos</span></div>
-                    <div className="stat-box" style={{ minWidth: 70 }}><span className="stat-value">3</span><span className="stat-label">Títulos</span></div>
-                    <div className="stat-box" style={{ minWidth: 70 }}><span className="stat-value">40+</span><span className="stat-label">Jogadores</span></div>
-                </div>
-            </div>
+            <main className="relative px-4 py-10 max-w-lg mx-auto overflow-x-hidden">
+                {/* Linha vertical central */}
+                <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#C9A227]/50 via-[#C9A227]/20 to-transparent"></div>
 
-            {/* TIMELINE */}
-            <div style={{ padding: '20px 16px' }}>
-                <p className="section-title" style={{ marginBottom: 20 }}>Linha do Tempo</p>
-
-                <div style={{ position: 'relative' }}>
-                    {/* Vertical line */}
-                    <div style={{
-                        position: 'absolute', left: 28, top: 0, bottom: 0, width: 2,
-                        background: 'linear-gradient(180deg, var(--gold) 0%, rgba(201,162,39,0.1) 100%)',
-                    }} />
-
-                    {timeline.map((item, i) => (
-                        <div key={item.year} className={`animate-fade-up delay-${Math.min(i + 1, 6)}`}
-                            style={{ display: 'flex', gap: 16, marginBottom: 24, position: 'relative' }}>
-                            {/* Icon circle */}
-                            <div style={{
-                                width: 58, height: 58, borderRadius: '50%', flexShrink: 0,
-                                background: `${item.color}18`, border: `2px solid ${item.color}50`,
-                                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                                zIndex: 1, boxShadow: '0 0 0 4px #0D1B3E',
-                                fontSize: '1.4rem',
-                            }}>
+                {timeline.map((item, i) => (
+                    <div
+                        key={item.year}
+                        className={`relative mb-16 flex w-full ${item.side === 'right' ? 'justify-end' : 'justify-start'} animate-fade-up`}
+                        style={{ animationDelay: `${i * 0.15}s` }}
+                    >
+                        <div className="absolute left-1/2 -translate-x-1/2 top-0 z-10 flex items-center justify-center">
+                            <div className="size-8 rounded-full bg-white border-2 border-[#C9A227] shadow-[0_0_10px_rgba(201,162,39,0.3)] flex items-center justify-center text-sm z-10 relative">
                                 {item.icon}
                             </div>
+                        </div>
 
-                            {/* Content */}
-                            <div className="card" style={{ flex: 1, padding: '14px 16px', marginTop: 8 }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                                    <span style={{
-                                        fontFamily: 'Bebas Neue', fontSize: '1.1rem',
-                                        padding: '2px 10px', borderRadius: 20,
-                                        background: `${item.color}20`, color: item.color,
-                                        border: `1px solid ${item.color}40`, letterSpacing: '0.06em',
-                                    }}>{item.year}</span>
-                                </div>
-                                <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1rem', marginBottom: 6, color: 'var(--text-primary)' }}>
-                                    {item.title}
-                                </p>
-                                <p style={{ fontSize: '0.85rem', lineHeight: 1.55, color: 'var(--text-muted)' }}>
-                                    {item.desc}
-                                </p>
+                        <div className={`w-[45%] bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden relative group`}>
+                            <div className="bg-slate-100 p-4 relative overflow-hidden flex items-center justify-center aspect-square md:aspect-video text-6xl opacity-80 mix-blend-multiply filter grayscale transition-all group-hover:grayscale-0">
+                                {item.icon}
+                            </div>
+                            <div className="p-4 bg-white relative z-10">
+                                <span className="text-[#C9A227] font-black text-sm mb-1 block font-['Barlow_Condensed'] text-lg">{item.year}</span>
+                                <h3 className="font-bold text-sm text-[#0D1B3E] leading-tight mb-2 uppercase">{item.title}</h3>
+                                <p className="text-xs text-slate-500 leading-relaxed line-clamp-4">{item.desc}</p>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
 
-                {/* Closing message */}
-                <div className="card card-glow" style={{ padding: '20px', textAlign: 'center', marginTop: 4 }}>
-                    <p style={{ fontSize: '2rem', marginBottom: 8 }}>🦅</p>
-                    <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 800, fontSize: '1.3rem', color: 'var(--gold)', marginBottom: 6 }}>
-                        A história continua sendo escrita!
-                    </p>
-                    <p className="text-sm text-muted" style={{ lineHeight: 1.6 }}>
-                        Cada jogo, cada gol, cada torcedor faz parte dessa história. Obrigado, Carmo!
-                    </p>
+                <div className="relative mb-10 flex flex-col items-center w-full animate-fade-up delay-700">
+                    <div className="relative z-10 size-10 rounded-full bg-[#0D1B3E] flex items-center justify-center text-[#C9A227] mb-4 border-2 border-[#C9A227] shadow-[0_0_15px_rgba(201,162,39,0.4)]">
+                        <Star className="w-5 h-5 fill-current" />
+                    </div>
+                    <div className="w-full bg-gradient-to-br from-[#1E3370] to-[#0D1B3E] text-white rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 opacity-10 pointer-events-none translate-x-1/4 -translate-y-1/4">
+                            <Flag className="w-[200px] h-[200px]" />
+                        </div>
+                        <div className="relative z-10">
+                            <span className="text-[#C9A227] font-black text-xl block mb-1 font-['Barlow_Condensed']">PRESENTE</span>
+                            <h2 className="text-2xl font-bold mb-3 font-['Barlow_Condensed'] uppercase tracking-wide">Legado em Construção</h2>
+                            <p className="text-sm text-slate-300 leading-relaxed">
+                                A cada partida escrevemos um novo capítulo. Continuamos nossa jornada rumo à excelência, honrando as cores, o escudo e cada gota de suor deixada em campo. Somos Debreceni!
+                            </p>
+                            <button onClick={() => navigate('/elenco')} className="mt-6 flex items-center gap-2 bg-[#C9A227] hover:bg-white text-[#0D1B3E] font-bold py-3 px-6 rounded-full text-sm font-['Barlow_Condensed'] uppercase tracking-wider transition-colors shadow-lg active:scale-95">
+                                Ver Elenco Atual
+                                <ArrowRight className="w-4 h-4" />
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </main>
         </div>
-    )
+    );
 }
