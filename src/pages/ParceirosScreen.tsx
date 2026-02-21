@@ -105,7 +105,7 @@ export default function ParceirosScreen() {
                                                 href={`https://wa.me/${p.whatsapp.replace(/\D/g, '')}`}
                                                 target="_blank" rel="noreferrer"
                                                 className="btn btn-sm"
-                                                style={{ gap: 6, background: '#25D366', color: '#fff', border: 'none', textDecoration: 'none', borderRadius: 'var(--radius-md)', padding: '8px 14px', display: 'flex', alignItems: 'center', fontSize: '0.8rem', fontWeight: 700 }}
+                                                style={{ gap: 6, background: '#25D366', color: '#fff', border: 'none', textDecoration: 'none', borderRadius: 'var(--debre-radius-md)', padding: '8px 14px', display: 'flex', alignItems: 'center', fontSize: '0.8rem', fontWeight: 700 }}
                                             >
                                                 <MessageCircle size={13} /> WhatsApp
                                             </a>

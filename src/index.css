@@ -26,10 +26,10 @@
   --card-border: rgba(0, 0, 0, 0.06);
   --danger: #E84040;
   --success: #27AE60;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
-  --radius-xl: 32px;
+  --debre-radius-sm: 8px;
+  --debre-radius-md: 14px;
+  --debre-radius-lg: 22px;
+  --debre-radius-xl: 32px;
   --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.04);
   --shadow-gold: 0 4px 20px rgba(201, 162, 39, 0.15);
   --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -37,21 +37,12 @@
 }
 
 /* ============================
-   RESET & BASE wrapped in @layer base
-   so Tailwind utility classes (@layer utilities) always win
+   BASE OVERRIDES — in @layer base so Tailwind utilities always win.
+   Tailwind v4 Preflight already resets margins/padding/box-sizing;
+   we only add app-specific overrides here.
 ============================= */
 @layer base {
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
   html {
-    font-size: 16px;
     -webkit-tap-highlight-color: transparent;
     scroll-behavior: smooth;
   }
@@ -69,17 +60,11 @@
     text-decoration: none;
   }
 
-  /* button: in @layer base — Tailwind bg-* classes override this */
   button {
     cursor: pointer;
     border: none;
     background: none;
     font-family: inherit;
-  }
-
-  img {
-    max-width: 100%;
-    display: block;
   }
 
   ul {
@@ -221,7 +206,7 @@ h3:not([class]) {
 .card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--debre-radius-md);
   box-shadow: var(--shadow-card);
   overflow: hidden;
   transition: var(--transition);
@@ -246,7 +231,7 @@ h3:not([class]) {
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: var(--radius-md);
+  border-radius: var(--debre-radius-md);
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
   font-size: 1rem;
@@ -594,7 +579,7 @@ h3:not([class]) {
 .form-input {
   background: rgba(255, 255, 255, 0.06);
   border: 1.5px solid rgba(201, 162, 39, 0.2);
-  border-radius: var(--radius-sm);
+  border-radius: var(--debre-radius-sm);
   padding: 13px 16px;
   color: var(--text-primary);
   font-size: 1rem;
@@ -775,14 +760,14 @@ h3:not([class]) {
   gap: 8px;
   padding: 4px;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-xl);
+  border-radius: var(--debre-radius-xl);
   border: 1px solid rgba(201, 162, 39, 0.1);
 }
 
 .pill-tab {
   flex: 1;
   padding: 9px 12px;
-  border-radius: calc(var(--radius-xl) - 4px);
+  border-radius: calc(var(--debre-radius-xl) - 4px);
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
@@ -811,7 +796,7 @@ h3:not([class]) {
   padding: 12px 8px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(201, 162, 39, 0.15);
-  border-radius: var(--radius-sm);
+  border-radius: var(--debre-radius-sm);
   min-width: 60px;
 }
 
@@ -843,7 +828,7 @@ h3:not([class]) {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: var(--navy);
   padding: 12px 24px;
-  border-radius: var(--radius-xl);
+  border-radius: var(--debre-radius-xl);
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
   font-size: 1rem;
