@@ -35,7 +35,7 @@ function AppShell() {
   const showNav = !noNavPages.includes(location.pathname)
 
   return (
-    <div id="app-shell" className="bg-stadium bg-stripes">
+    <div id="app-shell">
       <div className={`app-content${showNav ? '' : ' full-height'}`}>
         <Routes>
           <Route path="/" element={<SplashScreen />} />

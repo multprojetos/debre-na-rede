@@ -56,10 +56,10 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--text-primary);
-  color: var(--text-primary);
+  background-color: #FAF9F6;
+  color: #1E293B;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -105,13 +105,12 @@ ul {
    APP SHELL
 ============================= */
 #root {
-  height: 100dvh;
+  min-height: 100dvh;
   max-width: 430px;
   margin: 0 auto;
   position: relative;
-  /* NO overflow: hidden — that was blocking all scroll! */
-  background: var(--text-primary);
-  box-shadow: 0 0 80px rgba(0, 0, 0, 0.15);
+  background: #FAF9F6;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
 }
@@ -133,9 +132,7 @@ ul {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  /* Height = viewport minus bottom nav */
   height: calc(100dvh - 72px);
-  padding-bottom: 16px;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -150,18 +147,7 @@ ul {
    BACKGROUND PATTERNS
 ============================= */
 .bg-stadium {
-  background-color: var(--text-primary);
-  background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(201, 162, 39, 0.03) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 100%, rgba(13, 27, 62, 0.03) 0%, transparent 70%);
-}
-
-.bg-stripes {
-  background-image: repeating-linear-gradient(45deg,
-      transparent,
-      transparent 30px,
-      rgba(201, 162, 39, 0.02) 30px,
-      rgba(201, 162, 39, 0.02) 31px);
+  background-color: #FAF9F6;
 }
 
 /* ============================
