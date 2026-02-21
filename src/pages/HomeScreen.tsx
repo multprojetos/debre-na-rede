@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Bell, MapPin, Vote, Shirt, CreditCard, LayoutGrid, Trophy, Shield, Star, Flame, Calendar, ChevronRight } from 'lucide-react';
+import { Bell, MapPin, Vote, Shirt, Star, Flame, Calendar, ChevronRight, Trophy } from 'lucide-react';
 import { useNoticias, useProximaPartida } from '../hooks/useNoticias';
 import DebreBadge from '../components/DebreBadge';
 

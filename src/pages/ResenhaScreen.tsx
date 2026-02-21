@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { ChevronLeft, Users, Play, Mic, Send, ThumbsUp, MicOff } from 'lucide-react';
+import { ChevronLeft, Users, Mic, Send, ThumbsUp, MicOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ToastCtx } from '../App';
 import { useAuth } from '../contexts/AuthContext';
@@ -113,7 +113,7 @@ export default function ResenhaScreen() {
                         <p className="text-sm">Seja o primeiro a resenhar!</p>
                     </div>
                 ) : (
-                    comentarios.map((c, i) => {
+                    comentarios.map((c) => {
                         const isMe = isLoggedIn && user?.id === c.user_id;
                         return (
                             <div key={c.id} className={cn("flex items-start gap-3", isMe && "flex-row-reverse")}>

@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { ArrowLeft, ShoppingBag, ShoppingCart, Shield } from 'lucide-react';
+import { ArrowLeft, ShoppingCart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ToastCtx } from '../App';
 import { useMantos } from '../hooks/useConteudo';
@@ -27,7 +27,7 @@ export default function MantoScreen() {
             </header>
 
             <div className="flex gap-3 px-5 py-6 overflow-x-auto no-scrollbar">
-                {['Todos', 'Titular', 'Reserva', 'Retrô', 'Treino'].map((cat, i) => (
+                {['Todos', 'Titular', 'Reserva', 'Retrô', 'Treino'].map((cat) => (
                     <button
                         key={cat}
                         onClick={() => setSelectedCat(cat)}

@@ -1,6 +1,6 @@
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
-    ChevronRight, Image as ImageIcon, LogOut, MapPin, Mic, Settings, Shield, Trophy, Clock, Search, Menu as MenuIcon, Edit3, Stars, Newspaper, ShieldCheck
+    ChevronRight, Image as ImageIcon, LogOut, MapPin, Mic, Settings, Shield, Trophy, Clock, Search, Stars, Newspaper, ShieldCheck
 } from 'lucide-react';
 
 import DebreBadge from '../components/DebreBadge';

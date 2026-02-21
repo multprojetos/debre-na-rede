@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { Trophy, Zap, ArrowLeft, Star, Vote as VoteIcon, Check } from 'lucide-react';
+import { Trophy, Zap, ArrowLeft, Star, Check } from 'lucide-react';
 import { ToastCtx } from '../App';
 import { useAuth } from '../contexts/AuthContext';
 import { useUltimaPartida } from '../hooks/useNoticias';

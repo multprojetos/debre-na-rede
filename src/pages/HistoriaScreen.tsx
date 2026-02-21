@@ -1,6 +1,6 @@
-import { ArrowLeft, Trophy, Star, ArrowRight, Flag } from 'lucide-react';
+import { ArrowLeft, Star, ArrowRight, Flag } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import DebreBadge from '../components/DebreBadge';
+
 
 const timeline = [
     {
