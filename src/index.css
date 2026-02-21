@@ -37,51 +37,54 @@
 }
 
 /* ============================
-   RESET & BASE
+   RESET & BASE wrapped in @layer base
+   so Tailwind utility classes (@layer utilities) always win
 ============================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@layer base {
 
-html {
-  font-size: 16px;
-  -webkit-tap-highlight-color: transparent;
-  scroll-behavior: smooth;
-  height: 100%;
-}
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #FAF9F6;
-  color: #1E293B;
-  height: 100%;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+  html {
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #FAF9F6;
+    color: #1E293B;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+  /* button: in @layer base — Tailwind bg-* classes override this */
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
 
-ul {
-  list-style: none;
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  ul {
+    list-style: none;
+  }
 }
 
 /* ============================
@@ -93,7 +96,7 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--navy);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -110,11 +113,14 @@ ul {
   margin: 0 auto;
   position: relative;
   background: #FAF9F6;
-  box-shadow: 0 0 80px rgba(0, 0, 0, 0.08);
 }
 
-/* Desktop: show sidebar background */
+/* Desktop: box-shadow pill style */
 @media (min-width: 500px) {
+  #root {
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.08);
+  }
+
   body::before {
     content: '';
     position: fixed;
@@ -149,7 +155,8 @@ ul {
 }
 
 /* ============================
-   TYPOGRAPHY
+   TYPOGRAPHY — old CSS system
+   Only scoped to headings WITHOUT classes, so Tailwind font classes override cleanly
 ============================= */
 .font-display {
   font-family: 'Bebas Neue', sans-serif;
@@ -160,24 +167,26 @@ ul {
   font-family: 'Barlow Condensed', sans-serif;
 }
 
-h1,
-h2,
-h3 {
+/* Only apply old heading font to headings that have no class set (old system) */
+h1:not([class]),
+h2:not([class]),
+h3:not([class]),
+.page-header h2 {
   font-family: 'Barlow Condensed', sans-serif;
   line-height: 1.1;
 }
 
-h1 {
+h1:not([class]) {
   font-size: 2rem;
   font-weight: 800;
 }
 
-h2 {
+h2:not([class]) {
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-h3 {
+h3:not([class]) {
   font-size: 1.2rem;
   font-weight: 600;
 }
