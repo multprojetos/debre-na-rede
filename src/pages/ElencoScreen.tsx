@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search } from 'lucide-react'
+import { Search, Edit3 } from 'lucide-react'
 import { useJogadores } from '../hooks/useJogadores'
+import { useAuth } from '../contexts/AuthContext'
 
 const positions: Record<string, string> = {
     GL: 'Goleiro', ZG: 'Zagueiro', LD: 'Lat. Dir.', LE: 'Lat. Esq.',
@@ -15,6 +16,7 @@ const posColors: Record<string, string> = {
 
 export default function ElencoScreen() {
     const navigate = useNavigate()
+    const { isAdmin } = useAuth()
     const [cat, setCat] = useState<'Aberto' | 'Master'>('Aberto')
     const [search, setSearch] = useState('')
 
@@ -27,9 +29,19 @@ export default function ElencoScreen() {
     )
 
     return (
-        <div>
-            <header className="page-header">
+        <div style={{ minHeight: '100vh', paddingBottom: 90, background: '#FAF9F6' }}>
+            <header className="page-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <h2 style={{ flex: 1 }}>Elenco 2026</h2>
+                {isAdmin && (
+                    <button onClick={() => navigate('/admin')} style={{
+                        padding: '6px 12px', borderRadius: 8, background: 'rgba(201,162,39,0.1)',
+                        color: '#C9A227', border: '1px solid rgba(201,162,39,0.2)', fontSize: '0.68rem',
+                        fontWeight: 700, fontFamily: 'Barlow Condensed, sans-serif', cursor: 'pointer',
+                        display: 'flex', alignItems: 'center', gap: 4
+                    }}>
+                        <Edit3 size={12} /> Gerenciar
+                    </button>
+                )}
             </header>
 
             <div style={{ padding: '14px 16px' }}>
@@ -61,7 +73,7 @@ export default function ElencoScreen() {
                 {loading ? (
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                         {Array.from({ length: 6 }).map((_, i) => (
-                            <div key={i} className="card skeleton" style={{ height: 140, borderRadius: 12 }} />
+                            <div key={i} className="card skeleton" style={{ height: 160, borderRadius: 12 }} />
                         ))}
                     </div>
                 ) : (
@@ -83,14 +95,28 @@ export default function ElencoScreen() {
                                 }}>
                                     {p.number}
                                 </div>
-                                {/* Avatar */}
+
+                                {/* Avatar — shows photo if available */}
                                 <div className="avatar" style={{
-                                    width: 60, height: 60, fontSize: '1.3rem', margin: '0 auto 10px',
-                                    background: `linear-gradient(135deg, ${posColors[p.pos] ?? '#C9A227'}22, rgba(13,27,62,0.8))`,
-                                    border: `2px solid ${posColors[p.pos] ?? '#C9A227'}50`,
+                                    width: 68, height: 68, fontSize: '1.3rem', margin: '0 auto 10px',
+                                    background: p.avatar_url
+                                        ? 'transparent'
+                                        : `linear-gradient(135deg, ${posColors[p.pos] ?? '#C9A227'}22, rgba(13,27,62,0.8))`,
+                                    border: `2.5px solid ${posColors[p.pos] ?? '#C9A227'}60`,
                                 }}>
-                                    {p.initials}
+                                    {p.avatar_url ? (
+                                        <img src={p.avatar_url} alt={p.name}
+                                            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                                            onError={(e) => {
+                                                (e.target as HTMLImageElement).style.display = 'none';
+                                                (e.target as HTMLImageElement).parentElement!.textContent = p.initials;
+                                            }}
+                                        />
+                                    ) : (
+                                        p.initials
+                                    )}
                                 </div>
+
                                 <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '0.95rem', marginBottom: 4 }}>
                                     {p.name}
                                 </p>

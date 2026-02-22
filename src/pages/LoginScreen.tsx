@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, Eye, EyeOff, LogIn, UserPlus } from 'lucide-react'
+import { Eye, EyeOff, LogIn, UserPlus } from 'lucide-react'
 import DebreBadge from '../components/DebreBadge'
 import { ToastCtx } from '../App'
 import { useAuth } from '../contexts/AuthContext'
@@ -63,25 +63,43 @@ export default function LoginScreen() {
     }
 
     return (
-        <div className="login-screen">
-            <div className="login-bg">
-                <div className="login-bg-circle-1" />
-                <div className="login-bg-circle-2" />
-            </div>
+        <div className="login-screen" style={{
+            minHeight: '100vh', display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center',
+            background: 'linear-gradient(180deg, #0D1B3E 0%, #0a152e 100%)',
+            padding: '20px 16px', position: 'relative', overflow: 'hidden'
+        }}>
+            {/* Background effects */}
+            <div style={{
+                position: 'absolute', width: 300, height: 300, borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(201,162,39,0.12) 0%, transparent 70%)',
+                top: -50, right: -80, pointerEvents: 'none'
+            }} />
+            <div style={{
+                position: 'absolute', width: 250, height: 250, borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(30,51,112,0.3) 0%, transparent 70%)',
+                bottom: -60, left: -60, pointerEvents: 'none'
+            }} />
 
-            <button className="login-back" onClick={() => navigate('/')}>
-                <ArrowLeft size={18} />
-            </button>
-
-            <div className="login-header animate-scale">
-                <DebreBadge size={80} />
+            {/* Badge & Title */}
+            <div style={{
+                display: 'flex', alignItems: 'center', gap: 16, marginBottom: 32,
+                animation: 'scaleIn 0.4s ease both', position: 'relative', zIndex: 1
+            }}>
+                <DebreBadge size={72} />
                 <div>
-                    <p className="font-display" style={{ fontSize: '2rem', color: 'var(--text-primary)', lineHeight: 1 }}>DEBRE</p>
-                    <p className="font-display" style={{ fontSize: '2rem', color: 'var(--gold)', lineHeight: 1 }}>NA REDE</p>
+                    <p style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2rem', color: '#FAF9F6', lineHeight: 1, letterSpacing: '0.06em' }}>DEBRE</p>
+                    <p style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2rem', color: '#C9A227', lineHeight: 1, letterSpacing: '0.06em' }}>NA REDE</p>
                 </div>
             </div>
 
-            <div className="login-card animate-fade-up delay-1">
+            {/* Card */}
+            <div style={{
+                background: 'rgba(13,27,62,0.95)', borderRadius: 20, padding: '24px 20px',
+                width: '100%', maxWidth: 380, border: '1px solid rgba(201,162,39,0.15)',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.4)', position: 'relative', zIndex: 1,
+                animation: 'fadeInUp 0.5s ease 0.15s both'
+            }}>
                 {/* Tabs */}
                 <div className="pill-tabs" style={{ marginBottom: 22 }}>
                     <button className={`pill-tab ${tab === 'login' ? 'active' : ''}`} onClick={() => setTab('login')}>
@@ -103,6 +121,7 @@ export default function LoginScreen() {
                                 onChange={e => setName(e.target.value)}
                                 onKeyDown={handleKeyDown}
                                 autoComplete="name"
+                                style={{ background: 'rgba(255,255,255,0.06)', color: '#FAF9F6' }}
                             />
                         </div>
                     )}
@@ -117,6 +136,7 @@ export default function LoginScreen() {
                             onChange={e => setEmail(e.target.value)}
                             onKeyDown={handleKeyDown}
                             autoComplete="email"
+                            style={{ background: 'rgba(255,255,255,0.06)', color: '#FAF9F6' }}
                         />
                     </div>
 
@@ -127,14 +147,14 @@ export default function LoginScreen() {
                                 className="form-input"
                                 type={showPass ? 'text' : 'password'}
                                 placeholder="••••••••"
-                                style={{ width: '100%', paddingRight: 48 }}
+                                style={{ width: '100%', paddingRight: 48, background: 'rgba(255,255,255,0.06)', color: '#FAF9F6' }}
                                 value={pass}
                                 onChange={e => setPass(e.target.value)}
                                 onKeyDown={handleKeyDown}
                                 autoComplete={tab === 'login' ? 'current-password' : 'new-password'}
                             />
                             <button
-                                style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }}
+                                style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer' }}
                                 onClick={() => setShowPass(!showPass)}
                             >
                                 {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -143,8 +163,10 @@ export default function LoginScreen() {
                     </div>
 
                     {tab === 'login' && (
-                        <button className="text-xs" style={{ color: 'var(--gold)', textAlign: 'right', opacity: 0.8 }}
-                            onClick={() => showToast('Verifique seu e-mail para redefinir a senha')}>
+                        <button style={{
+                            color: '#C9A227', textAlign: 'right', opacity: 0.8, fontSize: '0.72rem',
+                            background: 'none', border: 'none', cursor: 'pointer'
+                        }} onClick={() => showToast('Verifique seu e-mail para redefinir a senha')}>
                             Esqueci minha senha
                         </button>
                     )}
@@ -165,14 +187,19 @@ export default function LoginScreen() {
 
                     <div style={{ position: 'relative', textAlign: 'center', margin: '4px 0' }}>
                         <div className="divider" />
-                        <span className="text-xs text-muted" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', background: 'rgba(13,27,62,0.95)', padding: '0 10px' }}>
+                        <span style={{
+                            position: 'absolute', top: '50%', left: '50%',
+                            transform: 'translate(-50%,-50%)',
+                            background: 'rgba(13,27,62,0.95)', padding: '0 10px',
+                            fontSize: '0.72rem', color: '#64748b'
+                        }}>
                             ou entre com
                         </span>
                     </div>
 
                     <button
                         className="btn btn-ghost btn-full"
-                        style={{ gap: 10, border: '1px solid rgba(0,0,0,0.12)' }}
+                        style={{ gap: 10, border: '1px solid rgba(255,255,255,0.12)', color: '#FAF9F6' }}
                         onClick={handleGoogle}
                         disabled={loading}
                     >
@@ -187,7 +214,10 @@ export default function LoginScreen() {
                 </div>
             </div>
 
-            <p className="text-xs text-muted" style={{ textAlign: 'center', margin: '20px 16px 12px', lineHeight: 1.5 }}>
+            <p style={{
+                fontSize: '0.68rem', color: '#64748b', textAlign: 'center',
+                margin: '20px 16px 12px', lineHeight: 1.5, position: 'relative', zIndex: 1
+            }}>
                 Ao entrar, você concorda com os Termos de Uso do Debre na Rede.
             </p>
         </div>

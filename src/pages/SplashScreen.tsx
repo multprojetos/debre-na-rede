@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DebreBadge from '../components/DebreBadge';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function SplashScreen() {
     const navigate = useNavigate();
+    const { isLoggedIn, loading: authLoading } = useAuth();
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
@@ -11,17 +13,39 @@ export default function SplashScreen() {
             setProgress((prev) => {
                 if (prev >= 100) {
                     clearInterval(timer);
-                    setTimeout(() => navigate('/home'), 500);
+                    // Wait a moment then redirect based on auth state
+                    setTimeout(() => {
+                        if (authLoading) return; // still loading, wait
+                        if (isLoggedIn) {
+                            navigate('/home');
+                        } else {
+                            navigate('/login');
+                        }
+                    }, 500);
                     return 100;
                 }
                 return prev + 2;
             });
         }, 30);
         return () => clearInterval(timer);
-    }, [navigate]);
+    }, [navigate, isLoggedIn, authLoading]);
+
+    // If auth finishes loading and progress is at 100, redirect
+    useEffect(() => {
+        if (!authLoading && progress >= 100) {
+            if (isLoggedIn) {
+                navigate('/home');
+            } else {
+                navigate('/login');
+            }
+        }
+    }, [authLoading, isLoggedIn, progress, navigate]);
 
     return (
-        <div className="relative flex h-screen w-full flex-col items-center justify-between bg-[#0D1B3E] overflow-hidden select-none font-['Lexend']" onClick={() => navigate('/home')}>
+        <div className="relative flex h-screen w-full flex-col items-center justify-between bg-[#0D1B3E] overflow-hidden select-none font-['Lexend']" onClick={() => {
+            if (isLoggedIn) navigate('/home');
+            else navigate('/login');
+        }}>
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-[150%] aspect-square rounded-full opacity-60 bg-[radial-gradient(circle,_rgba(201,162,39,0.25)_0%,_rgba(13,27,62,0)_70%)]"></div>
             </div>
