@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom'
+﻿import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, BarChart2 } from 'lucide-react'
 import { useJogador } from '../hooks/useJogadores'
 

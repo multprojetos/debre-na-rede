@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+﻿import { useNavigate, useLocation } from 'react-router-dom'
 import { Home, Newspaper, Users, BarChart2, MoreHorizontal } from 'lucide-react'
 
 const tabs = [

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+﻿import { useState, useContext } from 'react';
 import { ArrowLeft, ShoppingCart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ToastCtx } from '../App';
@@ -15,14 +15,14 @@ export default function MantoScreen() {
     const destaque = novosMantos[0] ?? mantos[0];
 
     return (
-        <div className="bg-[#FAF9F6] font-['Lexend'] text-[#0d1b3f] antialiased min-h-screen pb-24">
-            <header className="sticky top-0 z-50 flex items-center gap-3 bg-[#FAF9F6]/80 backdrop-blur-md px-5 py-4 border-b border-[#0d1b3f]/5">
-                <button onClick={() => navigate(-1)} className="p-2 -ml-2 text-[#0d1b3f] active:scale-95 transition-transform">
+        <div className="bg-[#FAF9F6] font-['Lexend'] text-[#1B2A4A] antialiased min-h-screen pb-24">
+            <header className="sticky top-0 z-50 flex items-center gap-3 bg-[#FAF9F6]/80 backdrop-blur-md px-5 py-4 border-b border-[#1B2A4A]/5">
+                <button onClick={() => navigate(-1)} className="p-2 -ml-2 text-[#1B2A4A] active:scale-95 transition-transform">
                     <ArrowLeft className="w-6 h-6" />
                 </button>
                 <div className="flex-1">
                     <h1 className="text-lg font-bold leading-none tracking-tight">Manto Sagrado</h1>
-                    <p className="text-[10px] uppercase tracking-widest text-[#0d1b3f]/60 font-medium">Debre na Rede FC</p>
+                    <p className="text-[10px] uppercase tracking-widest text-[#1B2A4A]/60 font-medium">Debre na Rede FC</p>
                 </div>
             </header>
 
@@ -33,7 +33,7 @@ export default function MantoScreen() {
                         onClick={() => setSelectedCat(cat)}
                         className={cn(
                             "flex h-10 shrink-0 items-center justify-center rounded-full px-6 text-sm font-semibold transition-all",
-                            selectedCat === cat ? "bg-[#0d1b3f] text-white shadow-lg shadow-[#0d1b3f]/20" : "bg-white border border-[#0d1b3f]/10 text-[#0d1b3f]"
+                            selectedCat === cat ? "bg-[#1B2A4A] text-white shadow-lg shadow-[#1B2A4A]/20" : "bg-white border border-[#1B2A4A]/10 text-[#1B2A4A]"
                         )}>
                         {cat}
                     </button>
@@ -42,7 +42,7 @@ export default function MantoScreen() {
 
             {!loading && destaque && (
                 <section className="px-5 mb-8">
-                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1E3370] to-[#0D1B3E] shadow-xl shadow-[#0D1B3E]/10 aspect-[16/10] flex items-center justify-between p-6">
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1E3370] to-[#1B2A4A] shadow-xl shadow-[#1B2A4A]/10 aspect-[16/10] flex items-center justify-between p-6">
                         <div className="absolute -right-10 -top-10 size-40 rounded-full bg-[#C9A227]/10 blur-3xl"></div>
                         <div className="z-10 w-[60%]">
                             {destaque.is_new && <span className="inline-block bg-[#C9A227]/20 text-[#C9A227] text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded mb-2">NOVO</span>}
@@ -51,7 +51,7 @@ export default function MantoScreen() {
                             <p className="text-[#C9A227] font-['Bebas_Neue'] text-2xl mb-4 tracking-wider">
                                 R$ {destaque.preco?.toFixed(2)}
                             </p>
-                            <button onClick={() => showToast('Reserva feita! Entraremos em contato! 📦')} className="bg-[#C9A227] hover:bg-[#C9A227]/90 text-[#0d1b3f] font-bold py-2 px-5 rounded-lg text-sm transition-colors active:scale-95 shadow-lg shadow-[#C9A227]/20">
+                            <button onClick={() => showToast('Reserva feita! Entraremos em contato! 📦')} className="bg-[#C9A227] hover:bg-[#C9A227]/90 text-[#1B2A4A] font-bold py-2 px-5 rounded-lg text-sm transition-colors active:scale-95 shadow-lg shadow-[#C9A227]/20">
                                 Reservar
                             </button>
                         </div>
@@ -63,7 +63,7 @@ export default function MantoScreen() {
             )}
 
             <div className="grid grid-cols-1 gap-6 px-5 pb-24">
-                <h3 className="text-sm font-bold uppercase tracking-widest text-[#0d1b3f]/40">História dos Mantos</h3>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-[#1B2A4A]/40">História dos Mantos</h3>
                 {loading ? (
                     <div className="flex flex-col gap-6">
                         {[1, 2, 3].map(i => (
@@ -74,7 +74,7 @@ export default function MantoScreen() {
                     <div key={manto.id} className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-100">
                         <div className="relative aspect-[4/3] overflow-hidden bg-slate-50 flex items-center justify-center">
                             <div className="absolute top-3 left-3 z-10 flex gap-2">
-                                <span className="bg-white/80 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-bold text-[#0d1b3f] uppercase tracking-tighter shadow-sm">{manto.tipo} {manto.ano}</span>
+                                <span className="bg-white/80 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-bold text-[#1B2A4A] uppercase tracking-tighter shadow-sm">{manto.tipo} {manto.ano}</span>
                                 {manto.is_new && <span className="bg-[#E84040]/10 text-[#E84040] px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Novo</span>}
                             </div>
                             <span className={cn("text-8xl transition-transform duration-500 group-hover:scale-110 drop-shadow-xl", manto.esgotado && "grayscale opacity-50")}>
@@ -83,14 +83,14 @@ export default function MantoScreen() {
                         </div>
                         <div className="flex flex-col p-4 border-t border-slate-50">
                             <div className="flex justify-between items-start mb-1">
-                                <h4 className="text-base font-bold text-[#0d1b3f]">{manto.cor_nome || 'Uniforme'}</h4>
+                                <h4 className="text-base font-bold text-[#1B2A4A]">{manto.cor_nome || 'Uniforme'}</h4>
                                 <span className={cn("text-lg font-bold font-['Barlow_Condensed'] tracking-wider", manto.esgotado ? "text-slate-400" : "text-[#C9A227]")}>
                                     {manto.esgotado ? 'Esgotado' : manto.preco ? `R$ ${manto.preco.toFixed(2)}` : '—'}
                                 </span>
                             </div>
                             <p className="text-xs text-slate-500 mb-4 leading-relaxed line-clamp-2">{manto.descricao || 'Camisa oficial do clube com alto padrão e qualidade.'}</p>
                             {!manto.esgotado ? (
-                                <button onClick={() => showToast('Reserva feita! 🏆')} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20 py-3 text-sm font-bold text-[#0d1b3f] transition-all active:scale-[0.98] hover:bg-[#C9A227] hover:text-[#0d1b3f]">
+                                <button onClick={() => showToast('Reserva feita! 🏆')} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20 py-3 text-sm font-bold text-[#1B2A4A] transition-all active:scale-[0.98] hover:bg-[#C9A227] hover:text-[#1B2A4A]">
                                     <ShoppingCart className="w-4 h-4" />
                                     Comprar
                                 </button>

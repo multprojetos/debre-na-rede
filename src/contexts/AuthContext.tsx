@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Auth Context — Debre na Rede
  * Integrado ao Supabase Auth
  */

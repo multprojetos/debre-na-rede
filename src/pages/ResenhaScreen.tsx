@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+﻿import { useState, useContext, useEffect } from 'react';
 import { ChevronLeft, Users, Mic, Send, ThumbsUp, MicOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ToastCtx } from '../App';
@@ -64,8 +64,8 @@ export default function ResenhaScreen() {
     };
 
     return (
-        <div className="bg-[#FAF9F6] font-['Lexend'] text-[#0d1b3f] flex flex-col h-screen overflow-hidden">
-            <header className="flex-shrink-0 sticky top-0 z-20 bg-[#0D1B3E] text-white p-4 pb-3 shadow-md">
+        <div className="bg-[#FAF9F6] font-['Lexend'] text-[#1B2A4A] flex flex-col h-screen overflow-hidden">
+            <header className="flex-shrink-0 sticky top-0 z-20 bg-[#1B2A4A] text-white p-4 pb-3 shadow-md">
                 <div className="flex items-center justify-between gap-3">
                     <button onClick={() => navigate(-1)} className="flex items-center justify-center p-1 rounded-full hover:bg-white/10 transition-colors">
                         <ChevronLeft className="w-7 h-7" />
@@ -86,7 +86,7 @@ export default function ResenhaScreen() {
                         <>
                             <div className="flex flex-col">
                                 <span className="text-[10px] uppercase text-slate-300 font-semibold tracking-wider">Pós-Jogo</span>
-                                <span className="text-sm font-medium font-['Barlow_Condensed'] text-white">Debrê <span className="text-[#C9A227]">{partida.gols_debre} - {partida.gols_adversario}</span> {partida.adversario}</span>
+                                <span className="text-sm font-medium font-['Barlow_Condensed'] text-white">Debre <span className="text-[#C9A227]">{partida.gols_debre} - {partida.gols_adversario}</span> {partida.adversario}</span>
                             </div>
                             <div className="flex items-center">
                                 <span className="text-[10px] font-bold text-slate-300 bg-white/10 px-2 py-1 rounded-full border border-white/10">
@@ -117,16 +117,16 @@ export default function ResenhaScreen() {
                         const isMe = isLoggedIn && user?.id === c.user_id;
                         return (
                             <div key={c.id} className={cn("flex items-start gap-3", isMe && "flex-row-reverse")}>
-                                <div className="w-10 h-10 rounded-full flex-shrink-0 border-2 border-white shadow-sm overflow-hidden bg-[#0D1B3E] text-white flex items-center justify-center font-bold text-sm">
+                                <div className="w-10 h-10 rounded-full flex-shrink-0 border-2 border-white shadow-sm overflow-hidden bg-[#1B2A4A] text-white flex items-center justify-center font-bold text-sm">
                                     {c.user_name.slice(0, 2).toUpperCase()}
                                 </div>
                                 <div className={cn("flex flex-col gap-1 max-w-[75%]", isMe && "items-end")}>
-                                    {!isMe && <span className="text-[12px] font-bold text-[#0D1B3E]/70 ml-1">{c.user_name}</span>}
+                                    {!isMe && <span className="text-[12px] font-bold text-[#1B2A4A]/70 ml-1">{c.user_name}</span>}
                                     <div className="relative">
                                         <div className={cn(
                                             "p-3 shadow-sm border",
                                             isMe
-                                                ? "bg-gradient-to-br from-[#1E3370] to-[#0D1B3E] text-white rounded-tl-xl rounded-bl-xl rounded-br-xl border-[#0D1B3E]/5"
+                                                ? "bg-gradient-to-br from-[#1E3370] to-[#1B2A4A] text-white rounded-tl-xl rounded-bl-xl rounded-br-xl border-[#1B2A4A]/5"
                                                 : "bg-white text-slate-800 rounded-tr-xl rounded-br-xl rounded-bl-xl border-slate-100"
                                         )}>
                                             <p className="text-sm leading-relaxed">{c.texto}</p>

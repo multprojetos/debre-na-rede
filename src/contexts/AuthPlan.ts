@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PLANO DE IMPLEMENTAÇÃO — Sistema de Login e Roles
  * ===================================================
  * Debre na Rede · Debreceni FC

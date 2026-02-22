@@ -1,4 +1,4 @@
-import { ArrowLeft, Star, ArrowRight, Flag } from 'lucide-react';
+﻿import { ArrowLeft, Star, ArrowRight, Flag } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -11,7 +11,7 @@ const timeline = [
     {
         year: '2011', icon: '🏆', color: '#C9A227', side: 'left',
         title: 'Primeiro Título Amador',
-        desc: 'O Debrê conquista seu primeiro campeonato municipal, entrando de vez para o mapa do esporte carmense com uma vitória heroica nos pênaltis.',
+        desc: 'O Debre conquista seu primeiro campeonato municipal, entrando de vez para o mapa do esporte carmense com uma vitória heroica nos pênaltis.',
     },
     {
         year: '2015', icon: '⚽', color: '#1E3370', side: 'right',
@@ -34,13 +34,13 @@ export default function HistoriaScreen() {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-[#FAF9F6] text-[#0d1b3f] min-h-screen pb-24 font-['Lexend'] relative shadow-lg">
-            <header className="sticky top-0 z-50 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-[#0d1b3f]/5 px-4 py-4 flex items-center justify-between shadow-sm">
-                <button onClick={() => navigate(-1)} className="text-[#0d1b3f] hover:bg-slate-100 p-2 rounded-full -ml-2 transition-colors">
+        <div className="bg-[#FAF9F6] text-[#1B2A4A] min-h-screen pb-24 font-['Lexend'] relative shadow-lg">
+            <header className="sticky top-0 z-50 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-[#1B2A4A]/5 px-4 py-4 flex items-center justify-between shadow-sm">
+                <button onClick={() => navigate(-1)} className="text-[#1B2A4A] hover:bg-slate-100 p-2 rounded-full -ml-2 transition-colors">
                     <ArrowLeft className="w-6 h-6" />
                 </button>
                 <div className="flex flex-col items-center">
-                    <h1 className="text-lg font-bold tracking-tight text-[#0d1b3f] uppercase font-['Barlow_Condensed'] leading-none">Nossa História</h1>
+                    <h1 className="text-lg font-bold tracking-tight text-[#1B2A4A] uppercase font-['Barlow_Condensed'] leading-none">Nossa História</h1>
                     <span className="text-[10px] uppercase tracking-widest text-[#C9A227] font-bold">Debre na Rede</span>
                 </div>
                 <div className="w-10"></div>
@@ -68,7 +68,7 @@ export default function HistoriaScreen() {
                             </div>
                             <div className="p-4 bg-white relative z-10">
                                 <span className="text-[#C9A227] font-black text-sm mb-1 block font-['Barlow_Condensed'] text-lg">{item.year}</span>
-                                <h3 className="font-bold text-sm text-[#0D1B3E] leading-tight mb-2 uppercase">{item.title}</h3>
+                                <h3 className="font-bold text-sm text-[#1B2A4A] leading-tight mb-2 uppercase">{item.title}</h3>
                                 <p className="text-xs text-slate-500 leading-relaxed line-clamp-4">{item.desc}</p>
                             </div>
                         </div>
@@ -76,10 +76,10 @@ export default function HistoriaScreen() {
                 ))}
 
                 <div className="relative mb-10 flex flex-col items-center w-full animate-fade-up delay-700">
-                    <div className="relative z-10 size-10 rounded-full bg-[#0D1B3E] flex items-center justify-center text-[#C9A227] mb-4 border-2 border-[#C9A227] shadow-[0_0_15px_rgba(201,162,39,0.4)]">
+                    <div className="relative z-10 size-10 rounded-full bg-[#1B2A4A] flex items-center justify-center text-[#C9A227] mb-4 border-2 border-[#C9A227] shadow-[0_0_15px_rgba(201,162,39,0.4)]">
                         <Star className="w-5 h-5 fill-current" />
                     </div>
-                    <div className="w-full bg-gradient-to-br from-[#1E3370] to-[#0D1B3E] text-white rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+                    <div className="w-full bg-gradient-to-br from-[#1E3370] to-[#1B2A4A] text-white rounded-2xl p-6 shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 opacity-10 pointer-events-none translate-x-1/4 -translate-y-1/4">
                             <Flag className="w-[200px] h-[200px]" />
                         </div>
@@ -89,7 +89,7 @@ export default function HistoriaScreen() {
                             <p className="text-sm text-slate-300 leading-relaxed">
                                 A cada partida escrevemos um novo capítulo. Continuamos nossa jornada rumo à excelência, honrando as cores, o escudo e cada gota de suor deixada em campo. Somos Debreceni!
                             </p>
-                            <button onClick={() => navigate('/elenco')} className="mt-6 flex items-center gap-2 bg-[#C9A227] hover:bg-white text-[#0D1B3E] font-bold py-3 px-6 rounded-full text-sm font-['Barlow_Condensed'] uppercase tracking-wider transition-colors shadow-lg active:scale-95">
+                            <button onClick={() => navigate('/elenco')} className="mt-6 flex items-center gap-2 bg-[#C9A227] hover:bg-white text-[#1B2A4A] font-bold py-3 px-6 rounded-full text-sm font-['Barlow_Condensed'] uppercase tracking-wider transition-colors shadow-lg active:scale-95">
                                 Ver Elenco Atual
                                 <ArrowRight className="w-4 h-4" />
                             </button>

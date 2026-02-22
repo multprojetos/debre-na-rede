@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { BarChart2 } from 'lucide-react'
 import { useTeamStats, useClassificacao, useArtilharia, useAssistencias } from '../hooks/useStats'
 

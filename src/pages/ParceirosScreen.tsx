@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { ArrowLeft, MapPin, Phone, MessageCircle } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useParceiros } from '../hooks/useConteudo'
@@ -24,7 +24,7 @@ export default function ParceirosScreen() {
                 <button className="page-back-btn" onClick={() => navigate(-1)}>
                     <ArrowLeft size={18} />
                 </button>
-                <h2 style={{ flex: 1 }}>Parceiros do Debrê</h2>
+                <h2 style={{ flex: 1 }}>Parceiros do Debre</h2>
             </header>
 
             <div style={{ padding: '14px 16px' }}>
@@ -32,7 +32,7 @@ export default function ParceirosScreen() {
                 <div className="card card-glow" style={{ padding: '18px', marginBottom: 18, textAlign: 'center', background: 'linear-gradient(135deg, rgba(30,51,112,0.9), rgba(13,27,62,0.95))' }}>
                     <p style={{ fontSize: '2.4rem', marginBottom: 8 }}>🤝</p>
                     <h3 style={{ fontFamily: 'Barlow Condensed', fontSize: '1.3rem', fontWeight: 800, marginBottom: 4 }}>
-                        Parceiros que acreditam no Debrê!
+                        Parceiros que acreditam no Debre!
                     </h3>
                     <p className="text-sm text-muted">
                         Valorize quem apoia o nosso futebol, mermão!

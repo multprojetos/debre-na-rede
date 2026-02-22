@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+﻿import { useState, useContext, useEffect } from 'react';
 import { Trophy, Zap, ArrowLeft, Star, Check } from 'lucide-react';
 import { ToastCtx } from '../App';
 import { useAuth } from '../contexts/AuthContext';
@@ -12,7 +12,7 @@ function formatPartida(p: { adversario: string; gols_debre: number; gols_adversa
     const day = d.getDate();
     const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
     return {
-        placar: `Debrê ${p.gols_debre} × ${p.gols_adversario} ${p.adversario}`,
+        placar: `Debre ${p.gols_debre} × ${p.gols_adversario} ${p.adversario}`,
         data: `${day} ${months[d.getMonth()]} ${d.getFullYear()} · ${p.campeonato ?? ''}`,
     };
 }
@@ -49,13 +49,13 @@ export default function VotoScreen() {
 
     return (
         <div className="bg-[#FAF9F6] font-['Lexend'] text-slate-900 antialiased min-h-screen flex flex-col pb-24">
-            <header className="sticky top-0 z-50 bg-[#FAF9F6]/80 backdrop-blur-md border-b border-[#0d1b3f]/5 px-4 py-4 flex items-center justify-between">
-                <button onClick={() => navigate(-1)} className="text-[#0d1b3f] hover:bg-slate-100 p-2 rounded-full -ml-2 transition-colors">
+            <header className="sticky top-0 z-50 bg-[#FAF9F6]/80 backdrop-blur-md border-b border-[#1B2A4A]/5 px-4 py-4 flex items-center justify-between">
+                <button onClick={() => navigate(-1)} className="text-[#1B2A4A] hover:bg-slate-100 p-2 rounded-full -ml-2 transition-colors">
                     <ArrowLeft className="w-6 h-6" />
                 </button>
                 <div className="flex items-center gap-2">
                     <Trophy className="w-5 h-5 text-[#C9A227]" />
-                    <h1 className="text-lg font-bold tracking-tight text-[#0d1b3f] uppercase font-['Barlow_Condensed']">Voto do Torcedor</h1>
+                    <h1 className="text-lg font-bold tracking-tight text-[#1B2A4A] uppercase font-['Barlow_Condensed']">Voto do Torcedor</h1>
                 </div>
                 <div className="w-10"></div>
             </header>
@@ -67,7 +67,7 @@ export default function VotoScreen() {
                     ) : partida ? (() => {
                         const { placar, data } = formatPartida(partida);
                         return (
-                            <div className="bg-gradient-to-br from-[#1E3370] to-[#0D1B3E] rounded-xl p-5 shadow-lg shadow-[#0D1B3E]/10 border border-[#C9A227]/20 flex flex-col relative overflow-hidden">
+                            <div className="bg-gradient-to-br from-[#1E3370] to-[#1B2A4A] rounded-xl p-5 shadow-lg shadow-[#1B2A4A]/10 border border-[#C9A227]/20 flex flex-col relative overflow-hidden">
                                 <div className="absolute -right-4 -top-4 size-24 bg-[#C9A227]/10 rounded-full blur-xl"></div>
                                 <div className="flex items-center gap-2 mb-2 z-10">
                                     <span className="bg-[#E84040]/20 text-[#E84040] border border-[#E84040]/30 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
@@ -88,7 +88,7 @@ export default function VotoScreen() {
                         onClick={() => setTab('craque')}
                         className={cn(
                             "flex-1 py-3 px-2 rounded-xl text-sm font-bold transition-all shadow-sm flex items-center justify-center gap-2 font-['Barlow_Condensed'] uppercase tracking-wide",
-                            tab === 'craque' ? "bg-[#0D1B3E] text-[#C9A227]" : "bg-white border border-slate-100 text-slate-500"
+                            tab === 'craque' ? "bg-[#1B2A4A] text-[#C9A227]" : "bg-white border border-slate-100 text-slate-500"
                         )}>
                         <Star className={cn("w-4 h-4", tab === 'craque' && "fill-current")} /> Craque do Jogo
                     </button>
@@ -96,14 +96,14 @@ export default function VotoScreen() {
                         onClick={() => setTab('gol')}
                         className={cn(
                             "flex-1 py-3 px-2 rounded-xl text-sm font-bold transition-all shadow-sm flex items-center justify-center gap-2 font-['Barlow_Condensed'] uppercase tracking-wide",
-                            tab === 'gol' ? "bg-[#0D1B3E] text-[#C9A227]" : "bg-white border border-slate-100 text-slate-500"
+                            tab === 'gol' ? "bg-[#1B2A4A] text-[#C9A227]" : "bg-white border border-slate-100 text-slate-500"
                         )}>
                         <Zap className={cn("w-4 h-4", tab === 'gol' && "fill-current")} /> Gol Mais Bonito
                     </button>
                 </div>
 
                 <div className="px-4 py-2 text-center">
-                    <h3 className="text-lg font-bold text-[#0d1b3f] font-['Barlow_Condensed'] uppercase">
+                    <h3 className="text-lg font-bold text-[#1B2A4A] font-['Barlow_Condensed'] uppercase">
                         {tab === 'craque' ? 'Quem foi o Craque do Jogo?' : 'Qual foi o golaço da partida?'}
                     </h3>
                     <p className="text-xs text-slate-500 mt-1">
@@ -138,12 +138,12 @@ export default function VotoScreen() {
                                             "w-[70px] h-[70px] rounded-full overflow-hidden flex items-center justify-center font-bold text-xl text-white transition-all duration-300 uppercase",
                                             isVoted
                                                 ? "border-[3px] border-[#C9A227] bg-[#C9A227] shadow-[0_0_15px_rgba(201,162,39,0.3)] ring-4 ring-[#C9A227]/20"
-                                                : "bg-[#0D1B3E] opacity-90 group-hover:bg-[#1E3370]"
+                                                : "bg-[#1B2A4A] opacity-90 group-hover:bg-[#1E3370]"
                                         )}>
                                             {j.initials}
                                         </div>
                                         {isVoted && (
-                                            <div className="absolute -bottom-1 -right-1 bg-[#0D1B3E] text-[#C9A227] rounded-full p-1 border-2 border-white">
+                                            <div className="absolute -bottom-1 -right-1 bg-[#1B2A4A] text-[#C9A227] rounded-full p-1 border-2 border-white">
                                                 <Check className="w-3 h-3 font-bold" />
                                             </div>
                                         )}
@@ -152,7 +152,7 @@ export default function VotoScreen() {
                                         <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">#{j.number}</p>
                                         <p className={cn(
                                             "text-sm font-bold font-['Barlow_Condensed'] tracking-wide truncate w-full",
-                                            isVoted ? "text-[#C9A227]" : "text-[#0d1b3f]"
+                                            isVoted ? "text-[#C9A227]" : "text-[#1B2A4A]"
                                         )}>{j.name}</p>
                                         <p className="text-[10px] text-slate-500 mt-0.5">{j.gols > 0 ? `${j.gols} gol(s)` : 'Destaque'}</p>
 
@@ -207,7 +207,7 @@ export default function VotoScreen() {
                                     <div className="flex-1">
                                         <p className={cn(
                                             "font-['Barlow_Condensed'] font-bold text-base",
-                                            isVoted ? "text-[#C9A227]" : "text-[#0d1b3f]"
+                                            isVoted ? "text-[#C9A227]" : "text-[#1B2A4A]"
                                         )}>
                                             Gol de {g.jogador_nome} — {g.minuto}
                                         </p>

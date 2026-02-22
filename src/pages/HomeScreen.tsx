@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+﻿import { useNavigate } from 'react-router-dom';
 import { Bell, MapPin, Vote, Shirt, Star, Flame, Calendar, ChevronRight, Trophy } from 'lucide-react';
 import { useNoticias, useProximaPartida } from '../hooks/useNoticias';
 import DebreBadge from '../components/DebreBadge';
@@ -41,12 +41,12 @@ export default function HomeScreen() {
                     <DebreBadge size={38} />
                     <div>
                         <p style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'rgba(13,27,63,0.5)', fontWeight: 600 }}>Debreceni FC</p>
-                        <h1 style={{ fontSize: '1.1rem', fontWeight: 800, lineHeight: 1, color: '#0d1b3f', textTransform: 'uppercase', fontFamily: 'Barlow Condensed, sans-serif' }}>DEBRE NA REDE</h1>
+                        <h1 style={{ fontSize: '1.1rem', fontWeight: 800, lineHeight: 1, color: '#1B2A4A', textTransform: 'uppercase', fontFamily: 'Barlow Condensed, sans-serif' }}>DEBRE NA REDE</h1>
                     </div>
                 </div>
                 <button style={{
                     width: 40, height: 40, borderRadius: '50%', background: 'rgba(13,27,63,0.05)',
-                    color: '#0d1b3f', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative',
+                    color: '#1B2A4A', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative',
                     border: 'none', cursor: 'pointer'
                 }}>
                     <Bell style={{ width: 20, height: 20 }} />
@@ -62,7 +62,7 @@ export default function HomeScreen() {
                 <section style={{ padding: '16px' }}>
                     <div style={{
                         position: 'relative', overflow: 'hidden', borderRadius: 16,
-                        background: '#0D1B3E', padding: '20px', color: 'white',
+                        background: '#1B2A4A', padding: '20px', color: 'white',
                         boxShadow: '0 8px 30px rgba(13,27,62,0.2)'
                     }}>
                         <div style={{
@@ -90,7 +90,7 @@ export default function HomeScreen() {
                                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: 16, marginBottom: 20 }}>
                                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, flex: 1 }}>
                                                 <DebreBadge size={52} />
-                                                <p style={{ fontSize: '0.85rem', fontWeight: 700, fontFamily: 'Barlow Condensed, sans-serif' }}>DEBRÊ</p>
+                                                <p style={{ fontSize: '0.85rem', fontWeight: 700, fontFamily: 'Barlow Condensed, sans-serif' }}>Debre</p>
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                                 <span style={{ fontSize: '1.5rem', fontWeight: 900, color: '#C9A227', marginBottom: 4, fontFamily: 'Barlow Condensed, sans-serif' }}>VS</span>
@@ -160,10 +160,10 @@ export default function HomeScreen() {
                     </div>
                 </section>
 
-                {/* ÚLTIMAS DO DEBRÊ */}
+                {/* ÚLTIMAS DO Debre */}
                 <section style={{ padding: '16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-                        <h2 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1E293B' }}>Últimas do Debrê</h2>
+                        <h2 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1E293B' }}>Últimas do Debre</h2>
                         <button onClick={() => navigate('/news')} style={{
                             fontSize: '0.72rem', fontWeight: 600, color: '#C9A227',
                             textDecoration: 'underline', textUnderlineOffset: 4, background: 'none', border: 'none', cursor: 'pointer'
@@ -206,7 +206,7 @@ export default function HomeScreen() {
                     <button onClick={() => navigate('/historia')} style={{
                         width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center',
                         justifyContent: 'center', padding: '24px 20px',
-                        background: 'linear-gradient(135deg, #1E3370, #0D1B3E)', borderRadius: 16,
+                        background: 'linear-gradient(135deg, #1E3370, #1B2A4A)', borderRadius: 16,
                         border: '1px solid rgba(201,162,39,0.3)',
                         boxShadow: '0 8px 30px rgba(13,27,62,0.15)',
                         cursor: 'pointer', transition: 'transform 0.15s', textAlign: 'center',

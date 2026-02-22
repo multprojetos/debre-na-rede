@@ -1,8 +1,8 @@
-import { ArrowLeft, Image, Play } from 'lucide-react'
+﻿import { ArrowLeft, Image, Play } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 const albums = [
-    { id: 1, title: 'Debrê 4×1 Vila Nova FC', date: '22 Fev', count: 28, type: 'Fotos', emoji: '📸' },
+    { id: 1, title: 'Debre 4×1 Vila Nova FC', date: '22 Fev', count: 28, type: 'Fotos', emoji: '📸' },
     { id: 2, title: 'Treino da Semana', date: '18 Fev', count: 12, type: 'Fotos', emoji: '⚽' },
     { id: 3, title: 'Gols da Rodada', date: '15 Fev', count: 4, type: 'Vídeos', emoji: '🎬' },
     { id: 4, title: 'Entrega dos Mantos 2026', date: '10 Fev', count: 18, type: 'Fotos', emoji: '👕' },
@@ -20,21 +20,21 @@ export default function GaleriaScreen() {
                 <button className="page-back-btn" onClick={() => navigate(-1)}>
                     <ArrowLeft size={18} />
                 </button>
-                <h2 style={{ flex: 1 }}>Galeria do Debrê</h2>
+                <h2 style={{ flex: 1 }}>Galeria do Debre</h2>
             </header>
 
             {/* FEATURED */}
             <div style={{ padding: '14px 16px 8px' }}>
                 <div className="card card-glow" style={{
                     height: 200, marginBottom: 14,
-                    background: 'linear-gradient(135deg, #1E3370, #0D1B3E)',
+                    background: 'linear-gradient(135deg, #1E3370, #1B2A4A)',
                     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12,
                     border: '1px solid rgba(201,162,39,0.3)', overflow: 'hidden', position: 'relative',
                 }}>
                     <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(201,162,39,0.06), transparent)' }} />
                     <div style={{ fontSize: '4rem', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))' }}>📸</div>
                     <p style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>
-                        Último Jogo · Debrê 4×1 Vila Nova
+                        Último Jogo · Debre 4×1 Vila Nova
                     </p>
                     <span className="badge badge-gold">28 fotos</span>
                 </div>

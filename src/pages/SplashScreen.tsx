@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DebreBadge from '../components/DebreBadge';
 import { useAuth } from '../contexts/AuthContext';
@@ -42,7 +42,7 @@ export default function SplashScreen() {
     }, [authLoading, isLoggedIn, progress, navigate]);
 
     return (
-        <div className="relative flex h-screen w-full flex-col items-center justify-between bg-[#0D1B3E] overflow-hidden select-none font-['Lexend']" onClick={() => {
+        <div className="relative flex h-screen w-full flex-col items-center justify-between bg-[#1B2A4A] overflow-hidden select-none font-['Lexend']" onClick={() => {
             if (isLoggedIn) navigate('/home');
             else navigate('/login');
         }}>

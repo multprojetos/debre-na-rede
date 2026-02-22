@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+﻿import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, LogIn, UserPlus } from 'lucide-react'
 import DebreBadge from '../components/DebreBadge'
@@ -32,15 +32,15 @@ export default function LoginScreen() {
             if (tab === 'login') {
                 const ok = await login(email.trim(), pass)
                 if (ok) {
-                    showToast('Bem-vindo de volta, torcedor! 💙🦅')
+                    showToast('Bem-vindo de volta! 💙🦅')
                     navigate('/home')
                 } else {
-                    showToast('E-mail ou senha incorretos 😬')
+                    showToast('E-mail ou senha incorretos. Confirme seu e-mail se acabou de se cadastrar.')
                 }
             } else {
                 const ok = await register(name.trim(), email.trim(), pass)
                 if (ok) {
-                    showToast('Cadastro feito! Confirme seu e-mail 📧')
+                    showToast('Conta criada! Tente fazer login agora.')
                     setTab('login')
                 } else {
                     showToast('Erro no cadastro. E-mail já usado?')
@@ -66,7 +66,7 @@ export default function LoginScreen() {
         <div className="login-screen" style={{
             minHeight: '100vh', display: 'flex', flexDirection: 'column',
             alignItems: 'center', justifyContent: 'center',
-            background: 'linear-gradient(180deg, #0D1B3E 0%, #0a152e 100%)',
+            background: 'linear-gradient(180deg, #1B2A4A 0%, #0a152e 100%)',
             padding: '20px 16px', position: 'relative', overflow: 'hidden'
         }}>
             {/* Background effects */}
@@ -180,7 +180,7 @@ export default function LoginScreen() {
                         {loading
                             ? <span className="btn-spinner" />
                             : tab === 'login'
-                                ? <><LogIn size={18} /> Entrar no Debrê!</>
+                                ? <><LogIn size={18} /> Entrar</>
                                 : <><UserPlus size={18} /> Criar minha conta</>
                         }
                     </button>

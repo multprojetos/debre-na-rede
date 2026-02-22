@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from 'react'
+﻿import { useState, useEffect, useRef, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, Shield, Plus, Edit, Trash2, Calendar, Users, Newspaper, Shirt, X, Save, Upload, Image as ImageIcon, BarChart2, MapPin, Trophy, Clock } from 'lucide-react'
 import { supabase } from '../lib/supabase'
@@ -28,7 +28,7 @@ const fieldDefs: Record<TabType, { key: string; label: string; type: 'text' | 'n
         { key: 'local', label: 'Local', type: 'text' },
         { key: 'categoria', label: 'Categoria', type: 'select', options: ['Aberto', 'Master'] },
         { key: 'campeonato', label: 'Campeonato', type: 'text' },
-        { key: 'gols_debre', label: 'Gols Debrê', type: 'number' },
+        { key: 'gols_debre', label: 'Gols Debre', type: 'number' },
         { key: 'gols_adversario', label: 'Gols Adversário', type: 'number' },
         { key: 'is_finalizada', label: 'Finalizada?', type: 'boolean' },
     ],
@@ -290,8 +290,8 @@ export default function AdminScreen() {
                                     padding: '8px 14px', borderRadius: 20, fontSize: '0.72rem', fontWeight: 700,
                                     fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.04em',
                                     textTransform: 'uppercase', cursor: 'pointer', flexShrink: 0,
-                                    background: activeTab === t.key ? 'linear-gradient(135deg, #C9A227, #A07D12)' : '#0D1B3E',
-                                    color: activeTab === t.key ? '#0D1B3E' : '#F5EDD6',
+                                    background: activeTab === t.key ? 'linear-gradient(135deg, #C9A227, #A07D12)' : '#1B2A4A',
+                                    color: activeTab === t.key ? '#1B2A4A' : '#F5EDD6',
                                     border: activeTab === t.key ? 'none' : '1px solid rgba(245,237,214,0.2)',
                                     boxShadow: activeTab === t.key ? '0 2px 12px rgba(201,162,39,0.4)' : 'none',
                                     transition: 'all 0.2s ease'
@@ -311,7 +311,7 @@ export default function AdminScreen() {
                     </div>
                     <button onClick={openCreateForm} style={{
                         display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 10,
-                        background: 'linear-gradient(135deg, #C9A227, #A07D12)', color: '#0D1B3E',
+                        background: 'linear-gradient(135deg, #C9A227, #A07D12)', color: '#1B2A4A',
                         fontWeight: 700, fontSize: '0.8rem', fontFamily: 'Barlow Condensed, sans-serif',
                         border: 'none', cursor: 'pointer', boxShadow: '0 2px 8px rgba(201,162,39,0.3)'
                     }}>
@@ -507,7 +507,7 @@ export default function AdminScreen() {
                             disabled={saving}
                             style={{
                                 width: '100%', padding: '14px', borderRadius: 14, marginTop: 20,
-                                background: 'linear-gradient(135deg, #C9A227, #A07D12)', color: '#0D1B3E',
+                                background: 'linear-gradient(135deg, #C9A227, #A07D12)', color: '#1B2A4A',
                                 fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1rem',
                                 letterSpacing: '0.04em', border: 'none', cursor: 'pointer',
                                 boxShadow: '0 4px 15px rgba(201,162,39,0.35)',

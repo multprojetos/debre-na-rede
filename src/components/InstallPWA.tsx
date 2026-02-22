@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PWA Install Button
  * Aparece automaticamente quando o browser dispara o evento beforeinstallprompt (Chrome/Edge/Android)
  * e mostra instruções para iOS Safari (que não tem o evento)
@@ -118,7 +118,7 @@ export default function InstallPWA() {
                         <button
                             onClick={handleInstall}
                             style={{
-                                background: 'var(--gold)', color: '#0D1B3E', border: 'none',
+                                background: 'var(--gold)', color: '#1B2A4A', border: 'none',
                                 borderRadius: 10, padding: '8px 14px', fontFamily: 'Barlow Condensed',
                                 fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer',
                                 display: 'flex', alignItems: 'center', gap: 6,
@@ -177,7 +177,7 @@ export default function InstallPWA() {
                         <button
                             onClick={() => setShowIOSGuide(true)}
                             style={{
-                                background: 'var(--gold)', color: '#0D1B3E', border: 'none',
+                                background: 'var(--gold)', color: '#1B2A4A', border: 'none',
                                 borderRadius: 10, padding: '8px 14px', fontFamily: 'Barlow Condensed',
                                 fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer',
                                 display: 'flex', alignItems: 'center', gap: 6,

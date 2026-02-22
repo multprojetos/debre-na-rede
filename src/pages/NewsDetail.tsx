@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom'
+﻿import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Calendar, Share2 } from 'lucide-react'
 import { useNoticia } from '../hooks/useNoticias'
 

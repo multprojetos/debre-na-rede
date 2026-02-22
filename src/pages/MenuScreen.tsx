@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+﻿import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     ChevronRight, Image as ImageIcon, LogOut, MapPin, Mic, Shield, Trophy,
@@ -22,7 +22,7 @@ export default function MenuScreen() {
 
     // Mock notifications — in production, fetch from supabase
     const notifications = [
-        { id: 1, title: 'Próximo jogo em 3 dias!', body: 'Debrê vs Vila Nova FC — Campo do Debrê', time: '2h atrás', icon: '⚽', read: false },
+        { id: 1, title: 'Próximo jogo em 3 dias!', body: 'Debre vs Vila Nova FC — Campo do Debre', time: '2h atrás', icon: '⚽', read: false },
         { id: 2, title: 'Novo manto disponível', body: 'O manto 2026 acabou de chegar na loja.', time: '1d atrás', icon: '👕', read: true },
         { id: 3, title: 'Votação aberta!', body: 'Vote no craque da última partida.', time: '2d atrás', icon: '🏆', read: true },
     ];
@@ -69,7 +69,7 @@ export default function MenuScreen() {
     ];
 
     return (
-        <div style={{ background: '#FAF9F6', color: '#0d1b3f', minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'Lexend, sans-serif', paddingBottom: 90 }}>
+        <div style={{ background: '#FAF9F6', color: '#1B2A4A', minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'Lexend, sans-serif', paddingBottom: 90 }}>
             {/* HEADER */}
             <header style={{
                 position: 'sticky', top: 0, zIndex: 50,
@@ -80,7 +80,7 @@ export default function MenuScreen() {
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <DebreBadge size={30} />
-                    <h1 style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#0d1b3f', fontFamily: 'Barlow Condensed, sans-serif' }}>Menu</h1>
+                    <h1 style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#1B2A4A', fontFamily: 'Barlow Condensed, sans-serif' }}>Menu</h1>
                 </div>
                 <button onClick={() => setShowNotifications(true)} style={{
                     padding: 8, borderRadius: '50%', background: 'none', border: 'none', cursor: 'pointer',
@@ -111,7 +111,7 @@ export default function MenuScreen() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 16, position: 'relative', zIndex: 1 }}>
                         <div style={{ position: 'relative' }}>
                             <div style={{
-                                width: 72, height: 72, borderRadius: '50%', background: '#0D1B3E',
+                                width: 72, height: 72, borderRadius: '50%', background: '#1B2A4A',
                                 border: '3px solid #C9A227', color: 'white', display: 'flex',
                                 alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', fontWeight: 700,
                                 overflow: 'hidden'
@@ -126,14 +126,14 @@ export default function MenuScreen() {
                                 position: 'absolute', bottom: -2, right: -2, width: 28, height: 28,
                                 borderRadius: '50%', background: '#C9A227', border: '2px solid white',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                                color: '#0D1B3E'
+                                color: '#1B2A4A'
                             }}>
                                 <Edit3 style={{ width: 12, height: 12 }} />
                             </button>
                         </div>
 
                         <div style={{ flex: 1 }}>
-                            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#0d1b3f', lineHeight: 1.2, fontFamily: 'Barlow Condensed, sans-serif' }}>
+                            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#1B2A4A', lineHeight: 1.2, fontFamily: 'Barlow Condensed, sans-serif' }}>
                                 {user ? user.name : 'Torcedor Fiel'}
                             </h2>
                             <div style={{
@@ -176,7 +176,7 @@ export default function MenuScreen() {
                                                 <item.icon style={{ width: 22, height: 22 }} />
                                             </div>
                                             <div style={{ textAlign: 'left' }}>
-                                                <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0D1B3E', fontFamily: 'Barlow Condensed, sans-serif' }}>{item.label}</p>
+                                                <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1B2A4A', fontFamily: 'Barlow Condensed, sans-serif' }}>{item.label}</p>
                                                 <p style={{ fontSize: '0.65rem', color: '#94a3b8', marginTop: 1 }}>{item.desc}</p>
                                             </div>
                                         </div>
@@ -201,13 +201,13 @@ export default function MenuScreen() {
                                 }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                                         <div style={{
-                                            width: 44, height: 44, borderRadius: 12, background: '#0D1B3E',
+                                            width: 44, height: 44, borderRadius: 12, background: '#1B2A4A',
                                             color: '#C9A227', display: 'flex', alignItems: 'center', justifyContent: 'center'
                                         }}>
                                             <ShieldCheck style={{ width: 22, height: 22 }} />
                                         </div>
                                         <div style={{ textAlign: 'left' }}>
-                                            <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0D1B3E', fontFamily: 'Barlow Condensed, sans-serif' }}>Painel Diretoria</p>
+                                            <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1B2A4A', fontFamily: 'Barlow Condensed, sans-serif' }}>Painel Diretoria</p>
                                             <p style={{ fontSize: '0.65rem', color: '#94a3b8', marginTop: 1 }}>Gerenciar todo conteúdo do app</p>
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@ export default function MenuScreen() {
                                         <User style={{ width: 22, height: 22 }} />
                                     </div>
                                     <div style={{ textAlign: 'left' }}>
-                                        <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0D1B3E', fontFamily: 'Barlow Condensed, sans-serif' }}>Editar Perfil</p>
+                                        <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1B2A4A', fontFamily: 'Barlow Condensed, sans-serif' }}>Editar Perfil</p>
                                         <p style={{ fontSize: '0.65rem', color: '#94a3b8', marginTop: 1 }}>Alterar nome e foto</p>
                                     </div>
                                 </div>
@@ -256,7 +256,7 @@ export default function MenuScreen() {
                                         )}
                                     </div>
                                     <div style={{ textAlign: 'left' }}>
-                                        <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0D1B3E', fontFamily: 'Barlow Condensed, sans-serif' }}>Notificações</p>
+                                        <p style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1B2A4A', fontFamily: 'Barlow Condensed, sans-serif' }}>Notificações</p>
                                         <p style={{ fontSize: '0.65rem', color: '#94a3b8', marginTop: 1 }}>
                                             {unreadCount > 0 ? `${unreadCount} nova${unreadCount > 1 ? 's' : ''}` : 'Tudo lido'}
                                         </p>
@@ -315,7 +315,7 @@ export default function MenuScreen() {
                         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
                             <div style={{ position: 'relative' }}>
                                 <div style={{
-                                    width: 80, height: 80, borderRadius: '50%', background: '#0D1B3E',
+                                    width: 80, height: 80, borderRadius: '50%', background: '#1B2A4A',
                                     border: '3px solid #C9A227', color: 'white', display: 'flex',
                                     alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 700
                                 }}>
@@ -324,7 +324,7 @@ export default function MenuScreen() {
                                 <div style={{
                                     position: 'absolute', bottom: 0, right: 0, width: 28, height: 28,
                                     borderRadius: '50%', background: '#C9A227', border: '2px solid white',
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0D1B3E'
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#1B2A4A'
                                 }}>
                                     <Camera style={{ width: 12, height: 12 }} />
                                 </div>
@@ -363,7 +363,7 @@ export default function MenuScreen() {
                             disabled={saving}
                             style={{
                                 width: '100%', padding: '14px', borderRadius: 14,
-                                background: 'linear-gradient(135deg, #C9A227, #A07D12)', color: '#0D1B3E',
+                                background: 'linear-gradient(135deg, #C9A227, #A07D12)', color: '#1B2A4A',
                                 fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1rem',
                                 letterSpacing: '0.04em', border: 'none', cursor: 'pointer',
                                 boxShadow: '0 4px 15px rgba(201,162,39,0.35)',
@@ -412,7 +412,7 @@ export default function MenuScreen() {
                                     </div>
                                     <div style={{ flex: 1, minWidth: 0 }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0D1B3E', fontFamily: 'Barlow Condensed, sans-serif' }}>{n.title}</p>
+                                            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1B2A4A', fontFamily: 'Barlow Condensed, sans-serif' }}>{n.title}</p>
                                             {!n.read && <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#E84040', flexShrink: 0 }} />}
                                         </div>
                                         <p style={{ fontSize: '0.72rem', color: '#64748b', marginTop: 2 }}>{n.body}</p>
